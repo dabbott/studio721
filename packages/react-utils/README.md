@@ -1,1 +1,3 @@
-This is a regular package
+# react-utils
+
+Utilities specific to React sites.

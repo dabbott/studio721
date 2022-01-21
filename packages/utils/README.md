@@ -1,1 +1,3 @@
-This is a regular package
+# utils
+
+General-purpose utils functions.

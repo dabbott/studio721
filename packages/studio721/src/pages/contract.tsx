@@ -441,8 +441,7 @@ export default function NFTStudio() {
                 Token URI{'"'}. <em>Beta software; use at your own risk.</em>
               </Regular>
               <Regular>
-                Created by <TwitterChip value="@dvnabbott" /> ×
-                <TwitterChip value="@open_pal" />
+                Created by <TwitterChip value="@dvnabbott" />
               </Regular>
             </VStack>
             <TokenPreview
@@ -569,6 +568,7 @@ export default function NFTStudio() {
   );
 }
 
+// Next router only picks up parameters if we render server-side
 export async function getServerSideProps(context: any) {
   return { props: {} };
 }

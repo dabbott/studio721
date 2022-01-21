@@ -191,8 +191,7 @@ export default function Studio721() {
         >
           <HStack>
             <Regular>
-              By <TwitterChip value="@dvnabbott" /> ×
-              <TwitterChip value="@open_pal" />
+              By <TwitterChip value="@dvnabbott" />
             </Regular>
           </HStack>
           <HStack

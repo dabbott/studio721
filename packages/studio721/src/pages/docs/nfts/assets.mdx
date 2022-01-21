@@ -1,1 +1,42 @@
-Coming soon...
+Now that we've looked at how NFT smart contracts and metadata work, the last
+piece is the `assets`. Where are the actual image, video, and other multimedia
+files stored, and how are they connected to the metadata?
+
+## Asset Storage
+
+Much like metadata, assets can be stored on-chain (in a smart contract), on
+decentralized storage (IPFS), or on centralized storage (a custom API, or other
+hosting providers like AWS).
+
+The main thing to consider is whether you assets are _static_ or _dynamically
+generated based on user input_.
+
+Most NFTs use static assets: images, video files, or webpages. Whether an NFT
+collection has 3 video files or 3000 video files, IPFS is a great choice.
+
+> If you're looking for easy IPFS storage, consider https://nft.storage/. It's
+> free for the foreseeable future (details on their site).
+
+Some NFTs are created dynamically based on user input. For example, maybe the
+collector can pick the color of an NFT when they mint it. In this case, there
+are several options:
+
+- If your assets are small files (SVG or tiny PNG), consider if you can generate
+  them on-chain. Otherwise...
+- Your assets can be an interactive webpage that you host on IPFS, and then you
+  can customize the `tokenURI` function to add a query parameter
+- You can upload a file to IPFS as part of your minting site (this is what
+  https://ethblock.art/ does, for example)
+- You can use a custom API that reads from your smart contract and returns an
+  asset. This is a practical but not very "web3" solution.
+
+If you're just getting started, uploading a folder to IPFS is probably the way
+to go. After that, especially if you're a developer, the other options can be
+fun to explore.
+
+## Metadata
+
+For an NFT that's just an image, you can use the `image` field of the metadata
+JSON. If the NFT is any other kind of multimedia, e.g. audio, video, or webpage,
+this should go in the `animation_url` field, as described in the
+[OpenSea Metadata Standards](https://docs.opensea.io/docs/metadata-standards).

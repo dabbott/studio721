@@ -1,1 +1,3 @@
-This is a regular package
+# theme
+
+The UI theme for Studio 721.

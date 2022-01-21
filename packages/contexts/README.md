@@ -1,1 +1,3 @@
-This is a regular package
+# contexts
+
+A context for connecting to the user's wallet
