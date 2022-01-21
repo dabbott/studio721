@@ -1,0 +1,13 @@
+{
+  "name": "components",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "UNLICENSED",
+  "files": [
+    "README.md"
+  ],
+  "dependencies": {
+    "prism-react-renderer": "^1.2.1",
+    "styled-components": "^5.3.3"
+  }
+}

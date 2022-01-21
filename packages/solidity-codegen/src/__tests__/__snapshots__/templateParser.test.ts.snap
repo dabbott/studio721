@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fails to parse 1`] = `
+Object {
+  "message": "Brackets {} don't match!",
+  "type": "failure",
+}
+`;
+
+exports[`parses 1`] = `
+Object {
+  "type": "success",
+  "value": Array [
+    Object {
+      "position": Object {
+        "end": 5,
+        "start": 0,
+      },
+      "type": "content",
+      "values": Array [
+        "hello",
+      ],
+    },
+  ],
+}
+`;
+
+exports[`parses identifier 1`] = `
+Object {
+  "type": "success",
+  "value": Array [
+    Object {
+      "position": Object {
+        "end": 2,
+        "start": 0,
+      },
+      "type": "content",
+      "values": Array [
+        "a ",
+      ],
+    },
+    Object {
+      "position": Object {
+        "end": 10,
+        "start": 3,
+      },
+      "type": "identifier",
+      "values": Array [
+        "tokenId",
+      ],
+    },
+    Object {
+      "position": Object {
+        "end": 14,
+        "start": 11,
+      },
+      "type": "content",
+      "values": Array [
+        " c ",
+      ],
+    },
+    Object {
+      "position": Object {
+        "end": 25,
+        "start": 15,
+      },
+      "type": "identifier",
+      "values": Array [
+        "parameters",
+      ],
+    },
+  ],
+}
+`;

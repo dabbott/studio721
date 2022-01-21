@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`proxy approval function 1`] = `
+"contract Test {
+  /** PROXY REGISTRY **/
+
+  address private immutable proxyRegistryAddress;
+
+  function isApprovedForAll(address owner, address operator)
+    override
+    public
+    view
+    returns (bool)
+  {
+    ProxyRegistry proxyRegistry = ProxyRegistry(proxyRegistryAddress);
+
+    if (address(proxyRegistry.proxies(owner)) == operator) {
+      return true;
+    }
+
+    return super.isApprovedForAll(owner, operator);
+  }
+}"
+`;
+
+exports[`proxy approval function with delegation 1`] = `
+"contract Test {
+  /** PROXY REGISTRY **/
+
+  address private immutable proxyRegistryAddress;
+
+  function isApprovedForAll(address owner, address operator) public view
+    returns (bool)
+  {
+    ProxyRegistry proxyRegistry = ProxyRegistry(proxyRegistryAddress);
+
+    if (address(proxyRegistry.proxies(owner)) == operator) {
+      return true;
+    }
+
+    return _isApprovedForAll(owner, operator);
+  }
+}"
+`;
+
+exports[`proxy proxy contracts 1`] = `
+"contract Test {
+  contract OwnableDelegateProxy {}
+
+  contract ProxyRegistry {
+    mapping(address => OwnableDelegateProxy) public proxies;
+  }
+}"
+`;

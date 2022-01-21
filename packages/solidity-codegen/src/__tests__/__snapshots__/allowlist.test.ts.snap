@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`allowlist base 1`] = `"contract Test {}"`;
+
+exports[`allowlist mint limit per wallet 1`] = `
+"contract Test {
+  /** MINTING LIMITS **/
+
+  mapping(address => uint256) private mintCountMap;
+
+  mapping(address => uint256) private allowedMintCountMap;
+
+  uint256 public constant MINT_LIMIT_PER_WALLET = 5;
+
+  function allowedMintCount(address minter) public view returns (uint256) {
+    return MINT_LIMIT_PER_WALLET - mintCountMap[minter];
+  }
+
+  function updateMintCount(address minter, uint256 count) private {
+    mintCountMap[minter] += count;
+  }
+}"
+`;
+
+exports[`allowlist owner mint + mint limit per wallet 1`] = `
+"contract Test {
+  /** MINTING LIMITS **/
+
+  mapping(address => uint256) private mintCountMap;
+
+  mapping(address => uint256) private allowedMintCountMap;
+
+  uint256 public constant MINT_LIMIT_PER_WALLET = 5;
+
+  function max(uint256 a, uint256 b) private pure returns (uint256) {
+    return a >= b ? a : b;
+  }
+
+  function allowedMintCount(address minter) public view returns (uint256) {
+    if (saleIsActive) {
+      return (
+        max(allowedMintCountMap[minter], MINT_LIMIT_PER_WALLET) -
+        mintCountMap[minter]
+      );
+    }
+
+    return allowedMintCountMap[minter] - mintCountMap[minter];
+  }
+
+  function updateMintCount(address minter, uint256 count) private {
+    mintCountMap[minter] += count;
+  }
+}"
+`;

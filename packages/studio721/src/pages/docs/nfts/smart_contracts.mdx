@@ -1,0 +1,116 @@
+import { NFTTokenDiagram } from '../../../components/diagrams/NFTTokenDiagram';
+
+**Smart contracts** are applications running on the blockchain. There are many
+different kinds smart contracts, but we'll be focusing on NFT smart contracts in
+particular.
+
+## NFT Smart Contracts
+
+An NFT smart contract is an application that stores a list of numbers. Each
+number, known as a token `id` (short for _identifier_), has an `owner` and
+`token uri` associated with it.
+
+For example, a contract might associate 3 token ids with owners and uris like
+this:
+
+<NFTTokenDiagram />
+
+When you buy an NFT (on OpenSea, for example), this updates the smart contract
+so that _your_ wallet address is listed as the owner of a specific id. The token
+uri tells OpenSea where to find the _metadata_ associated with this token, which
+can be used to display its multimedia assets.
+
+Typically for each smart contract, the first NFT is represented by the id 0 or
+1, and then the next is 2, then 3, and so on. So for example, an NFT collection
+like CryptoPunks or Bored Ape Yacht Club has 10000 NFTs total, each with a
+unique id 0 through 9999.
+
+Now, when you deploy an NFT smart contract on Ethereum, OpenSea will
+automatically detect it and add it to their website. But how do they _know_ a
+contract is an NFT contract?
+
+## Protocols
+
+A smart contract must have specific functionality in order to be considered an
+NFT smart contract. This set of functionality is called a `protocol`.
+
+On Ethereum, there are two NFT protocols:
+
+- **ERC-721** - The simplest NFT protocol, defined
+  [here](https://eips.ethereum.org/EIPS/eip-721)
+- **ERC-1155** - A more complex protocol allowing both fungible and non-fungible
+  tokens, defined [here](https://eips.ethereum.org/EIPS/eip-1155)
+
+Both protocols are conceptually fairly similar and work equally well for
+standard NFTs. If you're just getting started, I recommend using ERC-721 due to
+its simplicity. The tools on this site focus on ERC-721... which is why it's
+called "Studio 721"!
+
+There's a smart contract function called `supportsInterface` that a site like
+OpenSea can call to check if a specific contract is an NFT contract, i.e. if it
+supports ERC-721 or ERC-1155. This is how OpenSea automatically detects
+contracts you deploy!
+
+## Functions
+
+A protocol defines a set of smart contract `functions`. Any contract that
+implements the functions in an NFT protocol is _by definition_ an NFT smart
+contract.
+
+ERC-721 defines quite a few functions, and some of the technical details are
+fairly complex. For this reason, most NFT developers don't implement NFT smart
+contracts from scratch. Instead, they rely on open source implementations
+created and tested by the broader community of smart contract developers. By far
+the most common implementation is the
+[OpenZeppelin version](https://docs.openzeppelin.com/contracts/erc721).
+
+Though OpenZeppelin takes care of most of the advanced code, there are still a
+few functions that are essential to understand. Let's consider two key
+functions:
+
+- `ownerOf` - This function returns the wallet address that owns a specific
+  token id.
+- `tokenURI` - This function returns the metadata uri for a specific token id.
+
+Any NFT smart contract that implements ERC-721 will contain these two functions
+(among others). These functions are used by platforms like OpenSea to show who
+owns an NFT and what image to display for that NFT.
+
+> Note that older NFT contracts, such as CryptoPunks, may not adhere to either
+> ERC-721 or ERC-1155. OpenSea has a custom integration for such contracts.
+
+Let's see how this plays out in a real contract. Now, if only there were a free
+tool for interacting with smart contract functions...
+
+## Etherscan
+
+[Etherscan](https://etherscan.io/) is an extremely useful website for exploring
+transactions, addresses, smart contracts, and other Ethereum info.
+
+We can often view smart contract code and call smart contract functions using
+Etherscan. Smart contract authors must "verify" their source code for it to
+appear on the Etherscan website, so not all contracts can be viewed — however,
+most NFT smart contract authors verify their contracts to earn trust from people
+interacting with the NFTs.
+
+## Example
+
+Let's take a well-known contract and try calling `ownerOf` and `tokenURI` on
+Etherscan. Go to the Bored Ape Yacht Club smart contract on Etherscan
+[here](https://etherscan.io/address/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d#readContract).
+Note that you don't need to connect your wallet to try this!
+
+Try calling the `ownerOf` function to find the address that owns token 10:
+
+![Calling ownerOf for BAYC token 10](/docs/etherscan-bayc-ownerof.png)
+
+If you type the number "10" and then click the "Query" button, it should display
+a wallet address. In my case, that displayed `0x1d3a...7AF8`.
+
+Do the same for the `tokenURI` function:
+
+![Calling tokenURI for BAYC token 10](/docs/etherscan-bayc-tokenuri.png)
+
+In this case you should see the uri `ipfs://QmeS...aWtq/10`. This uri is a link
+to the _metadata_ for Bored Ape #10. We'll look at what that means in the next
+section!

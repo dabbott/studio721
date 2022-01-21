@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`withdrawing base 1`] = `
+"contract Test {
+  /** PAYOUT **/
+
+  function withdraw() public nonReentrant {
+    uint256 balance = address(this).balance;
+
+    Address.sendValue(payable(owner()), balance);
+  }
+}"
+`;
+
+exports[`withdrawing multiple destinations 1`] = `
+"contract Test {
+  /** PAYOUT **/
+
+  address private constant payoutAddress1 =
+    0x5BF4be9de72713bFE39A30EbE0691afd5fb7413a;
+
+  address private constant payoutAddress2 =
+    0x61E1a6Ed9109F554Bb785815D9f2C65f4a4C41A5;
+
+  function withdraw() public nonReentrant {
+    uint256 balance = address(this).balance;
+
+    Address.sendValue(payable(owner()), balance * 40 / 100);
+
+    Address.sendValue(payable(payoutAddress1), balance * 25 / 100);
+
+    Address.sendValue(payable(payoutAddress2), balance * 35 / 100);
+  }
+}"
+`;
+
+exports[`withdrawing no owner 1`] = `
+"contract Test {
+  /** PAYOUT **/
+
+  address private constant payoutAddress1 =
+    0x5BF4be9de72713bFE39A30EbE0691afd5fb7413a;
+
+  function withdraw() public nonReentrant {
+    uint256 balance = address(this).balance;
+
+    Address.sendValue(payable(payoutAddress1), balance);
+  }
+}"
+`;

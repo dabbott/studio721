@@ -1,0 +1,13 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "UNLICENSED",
+  "files": [
+    "README.md"
+  ],
+  "dependencies": {
+    "language-tools": "^0.0.5",
+    "tree-visit": "^0.1.0"
+  }
+}

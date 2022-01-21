@@ -1,0 +1,27 @@
+// @ts-ignore
+module.exports = {
+  extends: ['modular-app'],
+  rules: {
+    '@typescript-eslint/no-unsafe-assignment': 0,
+    '@typescript-eslint/no-unsafe-call': 0,
+    '@typescript-eslint/no-unsafe-member-access': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
+    '@typescript-eslint/no-empty-function': 0,
+    '@typescript-eslint/require-await': 0,
+    '@typescript-eslint/no-floating-promises': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/restrict-template-expressions': 0,
+    '@typescript-eslint/ban-types': 0,
+    '@typescript-eslint/no-unsafe-return': 0,
+    '@typescript-eslint/no-namespace': 0,
+    '@typescript-eslint/restrict-plus-operands': 0,
+    'jsx-a11y/anchor-is-valid': 0,
+    'no-useless-computed-key': 0,
+    'jest/no-commented-out-tests': 0,
+    'jest/prefer-to-be-undefined': 0,
+    '@typescript-eslint/prefer-regexp-exec': 0,
+    '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/no-misused-promises': 0,
+  },
+};

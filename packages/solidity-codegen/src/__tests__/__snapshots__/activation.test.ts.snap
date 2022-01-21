@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`activation active 1`] = `
+"contract Test {
+  /** ACTIVATION **/
+
+  bool public saleIsActive = true;
+
+  function setSaleIsActive(bool saleIsActive_) external onlyOwner {
+    saleIsActive = saleIsActive_;
+  }
+}"
+`;
+
+exports[`activation mutable access token 1`] = `
+"contract Test {
+  /** ACTIVATION **/
+
+  bool public saleIsActive = false;
+
+  function setSaleIsActive(bool saleIsActive_) external onlyOwner {
+    saleIsActive = saleIsActive_;
+  }
+
+  function setAccessTokenAddress(address accessTokenAddress_) external onlyOwner
+  {
+    accessTokenAddress = accessTokenAddress_;
+  }
+}"
+`;
+
+exports[`activation not active 1`] = `
+"contract Test {
+  /** ACTIVATION **/
+
+  bool public saleIsActive = false;
+
+  function setSaleIsActive(bool saleIsActive_) external onlyOwner {
+    saleIsActive = saleIsActive_;
+  }
+}"
+`;
+
+exports[`activation toggle access token 1`] = `
+"contract Test {
+  /** ACTIVATION **/
+
+  bool public saleIsActive = false;
+
+  function setSaleIsActive(bool saleIsActive_) external onlyOwner {
+    saleIsActive = saleIsActive_;
+  }
+
+  bool public accessTokenIsActive = true;
+
+  function setAccessTokenIsActive(bool accessTokenIsActive_) external onlyOwner
+  {
+    accessTokenIsActive = accessTokenIsActive_;
+  }
+}"
+`;

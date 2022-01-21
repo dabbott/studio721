@@ -1,0 +1,820 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`minting base + accessToken 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  address public immutable accessTokenAddress;
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint() public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    ERC721 accessToken = ERC721(accessTokenAddress);
+
+    require(accessToken.balanceOf(msg.sender) > 0, \\"Access token not owned\\");
+
+    _mint(msg.sender, totalSupply());
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base + enumerable 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  function mint() public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    _mint(msg.sender, totalSupply());
+  }
+}"
+`;
+
+exports[`minting base + id + accessToken + toggleAccessToken 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  address public immutable accessTokenAddress;
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 id) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    ERC721 accessToken = ERC721(accessTokenAddress);
+
+    if (accessTokenIsActive) {
+      require(accessToken.ownerOf(id) == msg.sender, \\"Access token not owned\\");
+    }
+
+    _mint(msg.sender, id);
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base + id + accessToken 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  address public immutable accessTokenAddress;
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 id) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    ERC721 accessToken = ERC721(accessTokenAddress);
+
+    require(accessToken.ownerOf(id) == msg.sender, \\"Access token not owned\\");
+
+    _mint(msg.sender, id);
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base + id + custom max id 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_TOKEN_ID = 10000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 id) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(id < MAX_TOKEN_ID, \\"Invalid token id\\");
+
+    _mint(msg.sender, id);
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base + id + custom max id equal to supply 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 id) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(id < MAX_SUPPLY, \\"Invalid token id\\");
+
+    _mint(msg.sender, id);
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base + id + parameters 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 id, TokenParameters calldata parameters)
+    public
+    nonReentrant
+  {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    _mint(msg.sender, id);
+
+    tokenParametersMap[id] = parameters;
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base + id 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 id) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    _mint(msg.sender, id);
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base + no supply 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  Counters.Counter private supplyCounter;
+
+  function mint() public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    _mint(msg.sender, totalSupply());
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base + onlyOwnerCanMint 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint() public nonReentrant onlyOwner {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    _mint(msg.sender, totalSupply());
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base + parameters 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(TokenParameters calldata parameters) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    uint256 id = totalSupply();
+
+    _mint(msg.sender, id);
+
+    tokenParametersMap[id] = parameters;
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting base 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint() public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    _mint(msg.sender, totalSupply());
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting id + multimint + accessToken 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  address public immutable accessTokenAddress;
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_MULTIMINT = 20;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256[] calldata ids) public nonReentrant {
+    uint256 count = ids.length;
+
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() + count - 1 < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(count <= MAX_MULTIMINT, \\"Mint at most 20 at a time\\");
+
+    ERC721 accessToken = ERC721(accessTokenAddress);
+
+    for (uint256 i = 0; i < count; i++) {
+      uint256 id = ids[i];
+
+      require(accessToken.ownerOf(id) == msg.sender, \\"Access token not owned\\");
+
+      _mint(msg.sender, id);
+
+      supplyCounter.increment();
+    }
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting id + multimint 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_MULTIMINT = 20;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256[] calldata ids) public nonReentrant {
+    uint256 count = ids.length;
+
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() + count - 1 < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(count <= MAX_MULTIMINT, \\"Mint at most 20 at a time\\");
+
+    for (uint256 i = 0; i < count; i++) {
+      uint256 id = ids[i];
+
+      _mint(msg.sender, id);
+
+      supplyCounter.increment();
+    }
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting limit per wallet + multimint 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_MULTIMINT = 2;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 count) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    if (allowedMintCount(msg.sender) >= count) {
+      updateMintCount(msg.sender, count);
+    } else {
+      revert(\\"Minting limit exceeded\\");
+    }
+
+    require(totalSupply() + count - 1 < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(count <= MAX_MULTIMINT, \\"Mint at most 2 at a time\\");
+
+    for (uint256 i = 0; i < count; i++) {
+      _mint(msg.sender, totalSupply());
+
+      supplyCounter.increment();
+    }
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting limit per wallet 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint() public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    if (allowedMintCount(msg.sender) >= 1) {
+      updateMintCount(msg.sender, 1);
+    } else {
+      revert(\\"Minting limit exceeded\\");
+    }
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    _mint(msg.sender, totalSupply());
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting multimint + enumerable 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_MULTIMINT = 20;
+
+  function mint(uint256 count) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() + count - 1 < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(count <= MAX_MULTIMINT, \\"Mint at most 20 at a time\\");
+
+    for (uint256 i = 0; i < count; i++) {
+      _mint(msg.sender, totalSupply());
+    }
+  }
+}"
+`;
+
+exports[`minting multimint + id + parameters 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 id, TokenParameters calldata parameters)
+    public
+    nonReentrant
+  {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    _mint(msg.sender, id);
+
+    tokenParametersMap[id] = parameters;
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting multimint + parameters 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(TokenParameters calldata parameters) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    uint256 id = totalSupply();
+
+    _mint(msg.sender, id);
+
+    tokenParametersMap[id] = parameters;
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting multimint + price + enumerable 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_MULTIMINT = 20;
+
+  uint256 public constant PRICE = 20000000000000000;
+
+  function mint(uint256 count) public payable nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() + count - 1 < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(count <= MAX_MULTIMINT, \\"Mint at most 20 at a time\\");
+
+    require(
+      msg.value >= PRICE * count, \\"Insufficient payment, 0.02 ETH per item\\"
+    );
+
+    for (uint256 i = 0; i < count; i++) {
+      _mint(msg.sender, totalSupply());
+    }
+  }
+}"
+`;
+
+exports[`minting multimint + price 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_MULTIMINT = 20;
+
+  uint256 public constant PRICE = 20000000000000000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 count) public payable nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() + count - 1 < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(count <= MAX_MULTIMINT, \\"Mint at most 20 at a time\\");
+
+    require(
+      msg.value >= PRICE * count, \\"Insufficient payment, 0.02 ETH per item\\"
+    );
+
+    for (uint256 i = 0; i < count; i++) {
+      _mint(msg.sender, totalSupply());
+
+      supplyCounter.increment();
+    }
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting multimint 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_MULTIMINT = 20;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 count) public nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() + count - 1 < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(count <= MAX_MULTIMINT, \\"Mint at most 20 at a time\\");
+
+    for (uint256 i = 0; i < count; i++) {
+      _mint(msg.sender, totalSupply());
+
+      supplyCounter.increment();
+    }
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting owner can mint + limit per wallet + multimint 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_MULTIMINT = 5;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 count) public nonReentrant {
+    if (allowedMintCount(msg.sender) >= count) {
+      updateMintCount(msg.sender, count);
+    } else {
+      revert(saleIsActive ? \\"Minting limit exceeded\\" : \\"Sale not active\\");
+    }
+
+    require(totalSupply() + count - 1 < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(count <= MAX_MULTIMINT, \\"Mint at most 5 at a time\\");
+
+    for (uint256 i = 0; i < count; i++) {
+      _mint(msg.sender, totalSupply());
+
+      supplyCounter.increment();
+    }
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting owner can mint + limit per wallet 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint() public nonReentrant {
+    if (allowedMintCount(msg.sender) >= 1) {
+      updateMintCount(msg.sender, 1);
+    } else {
+      revert(saleIsActive ? \\"Minting limit exceeded\\" : \\"Sale not active\\");
+    }
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    _mint(msg.sender, totalSupply());
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting owner can mint + multimint 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant MAX_MULTIMINT = 20;
+
+  Counters.Counter private supplyCounter;
+
+  function mint(uint256 count) public nonReentrant {
+    if (!saleIsActive) {
+      if (allowedMintCount(msg.sender) >= count) {
+        updateMintCount(msg.sender, count);
+      } else {
+        revert(\\"Sale not active\\");
+      }
+    }
+
+    require(totalSupply() + count - 1 < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(count <= MAX_MULTIMINT, \\"Mint at most 20 at a time\\");
+
+    for (uint256 i = 0; i < count; i++) {
+      _mint(msg.sender, totalSupply());
+
+      supplyCounter.increment();
+    }
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting owner can mint 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint() public nonReentrant {
+    if (!saleIsActive) {
+      if (allowedMintCount(msg.sender) >= 1) {
+        updateMintCount(msg.sender, 1);
+      } else {
+        revert(\\"Sale not active\\");
+      }
+    }
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    _mint(msg.sender, totalSupply());
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`minting price + enumerable 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant PRICE = 10000000000000000;
+
+  function mint() public payable nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(msg.value >= PRICE, \\"Insufficient payment, 0.01 ETH per item\\");
+
+    _mint(msg.sender, totalSupply());
+  }
+}"
+`;
+
+exports[`minting price 1`] = `
+"contract Test {
+  /** MINTING **/
+
+  uint256 public constant MAX_SUPPLY = 1000;
+
+  uint256 public constant PRICE = 10000000000000000;
+
+  Counters.Counter private supplyCounter;
+
+  function mint() public payable nonReentrant {
+    require(saleIsActive, \\"Sale not active\\");
+
+    require(totalSupply() < MAX_SUPPLY, \\"Exceeds max supply\\");
+
+    require(msg.value >= PRICE, \\"Insufficient payment, 0.01 ETH per item\\");
+
+    _mint(msg.sender, totalSupply());
+
+    supplyCounter.increment();
+  }
+
+  function totalSupply() public view returns (uint256) {
+    return supplyCounter.current();
+  }
+}"
+`;
+
+exports[`parameters generate 1`] = `
+"contract Test {
+  /** TOKEN PARAMETERS **/
+
+  struct TokenParameters {
+    uint256 a;
+    uint256 b;
+  }
+
+  mapping(uint256 => TokenParameters) private tokenParametersMap;
+
+  function tokenParameters(uint256 tokenId) external view
+    returns (TokenParameters memory)
+  {
+    return tokenParametersMap[tokenId];
+  }
+}"
+`;

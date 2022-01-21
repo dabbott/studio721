@@ -1,0 +1,250 @@
+The term `metadata` refers to "auxiliary data" that describes some "main data".
+It's a vague term that developers use for a lot of different things, but it
+means something specific when talking about NFTs.
+
+## NFT Metadata
+
+In the case of an NFT, let's say a photograph NFT, the "main data" is the image
+file. This is likely a binary file format, such as PNG, and is typically stored
+on some cloud/decentralized server. The `metadata` is then the "auxiliary data"
+_about_ the photograph: its title, description, traits, and most importantly,
+the link to the PNG file wherever it may be stored.
+
+The metadata is stored in a JSON format, such as this:
+
+<Editor
+  height={220}
+  filename="0.json"
+  code={`{
+  "name": "Token #0",
+  "description": "An example nonfungible token. Photo by Austin Schmid from https://picsum.photos.",
+  "image": "https://picsum.photos/id/909/510/510",
+  "attributes": [
+    { "trait_type": "Width", "value": 3200 },
+    { "trait_type": "Height", "value": 1800 },
+  ]
+}`}
+/>
+
+There are several different supported metadata schemas. The one shown above
+follows one of the formats outlined in the
+[OpenSea Metadata Standards](https://docs.opensea.io/docs/metadata-standards).
+
+## Token URI
+
+Remember the smart contract function `tokenURI` from the previous section? The
+`tokenURI` function returns the uri of a metadata JSON file like the one shown
+above! This is how wallets, marketplaces, and other smart contracts know where
+to find the image for the NFT: they first call the `tokenURI` function to read
+the metadata JSON file, and then they display the link from the `image` field of
+the JSON.
+
+For an ERC-721 collection of 10000 NFTs, each token will typically have its own
+metadata JSON file — this means 10000 separate JSON files. Where do all of these
+get stored?
+
+## Metadata Storage
+
+There are typically 3 places where metadata files are stored:
+
+- **"On-chain"** - Directly on the blockchain as part of a smart contract
+- **IPFS** - An immutable, decentralized file storage solution, https://ipfs.io/
+- **Custom API** - A centralized server that can serve arbitrary data
+
+Let's walk through each of these options.
+
+### On-chain
+
+The metadata JSON files can be stored or generated as part of your smart
+contract. In general, _storing_ data on the blockchain is very expensive, so
+this approach isn't extremely common. However, for projects where the metadata
+is relatively simple and can be _generated_ on-the-fly, e.g.
+[Loot](https://www.lootproject.com/), then this approach is a great option.
+
+The `tokenURI` function must return a valid uri that represents a JSON file;
+after generating the metadata fields (title, image, attributes, etc), that data
+must then be converted into a base64-encoded JSON file.
+
+As an example, this is what it looks like when calling `tokenURI` for token 10
+of the
+[Loot smart contract on Etherscan](https://etherscan.io/address/0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7#readContract).
+
+![Calling tokenURI for Loot token 10](/docs/etherscan-loot-tokenuri.png)
+
+Decoding this data gives:
+
+<Editor
+  height={140}
+  filename="10.json"
+  code={`{
+  "name": "Bag #10", 
+  "description": "Loot is randomized adventurer gear generated and stored on chain. Stats, images, and other functionality are intentionally omitted for others to interpret. Feel free to use Loot in any way you want.", 
+  "image": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaW5ZTWluIG1lZXQiIHZpZXdCb3g9IjAgMCAzNTAgMzUwIj48c3R5bGU+LmJhc2UgeyBmaWxsOiB3aGl0ZTsgZm9udC1mYW1pbHk6IHNlcmlmOyBmb250LXNpemU6IDE0cHg7IH08L3N0eWxlPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9ImJsYWNrIiAvPjx0ZXh0IHg9IjEwIiB5PSIyMCIgY2xhc3M9ImJhc2UiPk1hdWw8L3RleHQ+PHRleHQgeD0iMTAiIHk9IjQwIiBjbGFzcz0iYmFzZSI+Um9iZTwvdGV4dD48dGV4dCB4PSIxMCIgeT0iNjAiIGNsYXNzPSJiYXNlIj5EaXZpbmUgSG9vZDwvdGV4dD48dGV4dCB4PSIxMCIgeT0iODAiIGNsYXNzPSJiYXNlIj5TdHVkZGVkIExlYXRoZXIgQmVsdDwvdGV4dD48dGV4dCB4PSIxMCIgeT0iMTAwIiBjbGFzcz0iYmFzZSI+SG9seSBHcmVhdmVzPC90ZXh0Pjx0ZXh0IHg9IjEwIiB5PSIxMjAiIGNsYXNzPSJiYXNlIj5Xb29sIEdsb3ZlczwvdGV4dD48dGV4dCB4PSIxMCIgeT0iMTQwIiBjbGFzcz0iYmFzZSI+Ikhhdm9jIFN1biIgQW11bGV0IG9mIFJlZmxlY3Rpb248L3RleHQ+PHRleHQgeD0iMTAiIHk9IjE2MCIgY2xhc3M9ImJhc2UiPlBsYXRpbnVtIFJpbmc8L3RleHQ+PC9zdmc+"
+}`}
+/>
+
+Note that the `image` uri is also encoded as a base64 SVG file. Even the image
+is generated as part of the smart contract!
+
+### IPFS
+
+IPFS is a _decentralized_ storage protocol. It's conceptually similar to
+consumer storage services like Dropbox or Google Drive, only instead of a single
+company storing all of the files, _anybody_ can store the files. Storage
+providers are incentivized to store files because they earn _filecoin_ for their
+storage space.
+
+There are a couple features that make IPFS well-suited for storing NFT-related
+files, compared to e.g. Dropbox:
+
+- **Immutable** - Files stored on IPFS _can't be changed_. An IPFS uri always
+  refers to the exact same file data. Note that files _can_ potentially
+  disappear if there are no providers storing them.
+- **Permissionless** - Much like the blockchain, IPFS is a permissionless
+  system: anybody can store files and communicate with other peers on the
+  network, and no centralized authority can take files down. (NFT collectors
+  don't have to worry about their NFTs being censored)
+
+Additionally, IPFS introduces its own `ipfs://` uri scheme that's supported by
+platforms like OpenSea.
+
+As an example, let's consider Bored Ape Yacht Club again. Calling the `tokenURI`
+function for token 10 returns an `ipfs://` uri:
+
+![Calling tokenURI for BAYC token 10](/docs/etherscan-bayc-tokenuri.png)
+
+If you put
+[ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/10](ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/10)
+in your browser address bar... probably nothing will happen. A few browsers,
+like Brave, natively support IPFS and will show the file, but most won't.
+However, the organization behind IPFS hosts a `https://` server for accessing
+files from your browser, in this case:
+https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/10
+
+Once again we should see a familiar JSON format:
+
+<Editor
+  height={250}
+  filename="10.json"
+  code={`{
+  "image": "ipfs://QmPQdVU1riwzijhCs1Lk6CHmDo4LpmwPPLuDauY3i8gSzL",
+  "attributes": [
+    { "trait_type": "Clothes", "value": "Navy Striped Tee" },
+    { "trait_type": "Background", "value": "Aquamarine" },
+    { "trait_type": "Hat", "value": "Bayc Hat Red" },
+    { "trait_type": "Fur", "value": "Dmt" },
+    { "trait_type": "Eyes", "value": "Eyepatch" },
+    { "trait_type": "Mouth", "value": "Bored"},
+  ] 
+}
+`}
+/>
+
+You'll also notice that this uri ends in the number "10". You can try changing
+it to any other number 0 through 9999. In order to get the uris to start with
+the same string, all 10000 metadata files are stored together on IPFS in a
+single folder.
+
+> For smaller NFT collections, it's also common to upload files individually and
+> use a smart contract that supports setting a completely different uri for each
+> token id.
+
+### Custom API
+
+Lastly, you can set up a custom API that serves arbitrary JSON metadata. For
+developers, this is likely the easiest option; for non-developers, IPFS may be
+simpler.
+
+The advantage of this approach is speed, cost, and flexibility. As an example,
+`721.so` serves a simple set of NFT metadata for testing purposes. For _any_
+token id from 0 to infinity, the API will return valid metadata. This would be
+impossible with IPFS, since you could never upload _infinity files_.
+
+For example, token 123456789,
+[https://www.721.so/api/example/metadata/123456789](https://www.721.so/api/example/metadata/123456789):
+
+<Editor
+  height={240}
+  filename="123456789.json"
+  code={`{
+  "name": "Token #123456789",
+  "description": "An example nonfungible token. Photo by Ivan Slade from https://picsum.photos.",
+  "image": "https://picsum.photos/id/941/510/510",
+  "external_url": "https://unsplash.com/photos/RdyMe8KQAV0",
+  "animation_url": "https://picsum.photos/id/941/2600/1734",
+  "attributes": [
+    { trait_type: "Width", value: 2600 },
+    { trait_type: "Height", value: 1734 },
+  ]
+}`}
+/>
+
+## Choosing a Storage Option
+
+The following table highlights a few key factors to consider when storing
+metadata:
+
+| Option     | Immutable | Permanent | Cost<div style={{ width: "80px" }}></div> | Flexibility |
+| ---------- | --------- | --------- | ----------------------------------------- | ----------- |
+| On-chain   | ✅        | ✅        | 🛑                                        | 🛑          |
+| IPFS       | ✅        | 🛑        | ✅                                        | 🛑          |
+| Custom API | 🛑        | 🛑        | ✅                                        | ✅          |
+
+Typically NFT collectors prefer "on-chain" metadata when possible. Data on the
+blockchain is **immutable** (can't be changed) and **can never disappear**,
+which is exactly what you want for most NFTs. However, this option only really
+makes sense for certain kinds of very simple NFTs, where the `image` is embedded
+into the metadata (e.g. Loot). The image in this case is almost always a small
+SVG file, rather than PNG files, video files, or interactive multimedia, since
+otherwise it would simply be too expensive.
+
+Most projects store metadata files on IPFS. Data stored on IPFS is
+**immutable**, but **can disappear**. Somebody has to pay a storage provider, or
+run their own server, to keep the files available. Typically today the NFT
+creator pays for IPFS storage, however conceptually it may make more sense for
+the collector to pay for storage of the NFTs they buy.
+
+Custom APIs are simple and inexpensive to set up as a developer. They're also
+convenient because you can easily fix bugs that you may not encounter until
+after the NFT sale begins. However, the downside for collectors is that the data
+is **not immutable** and **can disappear** at any time. Many projects still use
+custom APIs however, and ultimately it's up to the project and its collectors to
+decide if the fact that data can change or disappear is important or not.
+
+> [Arweave](https://www.arweave.org/) is another popular decentralized storage
+> provider besides IPFS. It promises to store files forever for a 1-time
+> payment. It's not as widely supported as IPFS, and it's unclear if this
+> 1-time-payment hypothesis will work long term, but it's definitely an
+> interesting option to consider.
+
+## Configurable Smart Contracts
+
+Many NFT smart contracts allow configuring uris at the smart contract level, so
+functionally the NFTs can still change or disappear even if they're stored using
+an immutable storage system like IPFS.
+
+This configuration feature is useful for a few reasons:
+
+- There may be a bug in the metadata, and so it can be useful to be able to
+  change it and fix things.
+- You may want to do a "reveal", where people mint NFTs before the individual
+  traits have been revealed. After all NFTs have been minted, you can change the
+  uris to point to the _real_ metadata.
+- You may actually _want_ to update the NFTs in the future, if that's a feature
+  of your collection.
+
+For example, Bored Ape Yacht Club and all Studio 721 contracts include the smart
+contract function `setBaseURI`, which allows changing token uris.
+
+> Bored Ape Yacht Club also includes a _separate_ hash of all of their metadata
+> files, which they call "provenance", so that it's obvious if something
+> changes. There's a newer approach that can do this in the token uris
+> themselves, by uploading a
+> [Car file](https://github.com/web3-storage/ipfs-car) to IPFS, which is what
+> Studio 721 Artkit does.
+
+> The contract owner can also theoretically call the `renounceOwnership`
+> function to revoke their own ability to change the uris, though this rarely
+> happens in practice. Most NFT creators have good intentions, so the ability to
+> change the uris is only used for legitimate reasons, and is generally
+> supported by collectors.

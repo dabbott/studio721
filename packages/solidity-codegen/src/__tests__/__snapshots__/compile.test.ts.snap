@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`compiles + delegation 1`] = `
+Array [
+  "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/interfaces/IERC165Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/interfaces/IERC2981Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+  "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721ReceiverUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/IERC721MetadataUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/StorageSlotUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol",
+  "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+  "@openzeppelin/contracts/utils/Counters.sol",
+  "Test.sol",
+  "gwei-slim-nft-contracts/contracts/base/ERC721Base.sol",
+  "gwei-slim-nft-contracts/contracts/base/ERC721Delegated.sol",
+  "gwei-slim-nft-contracts/contracts/base/IBaseERC721Interface.sol",
+]
+`;
+
+exports[`compiles 1`] = `
+Array [
+  "@openzeppelin/contracts/access/Ownable.sol",
+  "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+  "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+  "@openzeppelin/contracts/token/ERC721/IERC721.sol",
+  "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+  "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+  "@openzeppelin/contracts/utils/Address.sol",
+  "@openzeppelin/contracts/utils/Context.sol",
+  "@openzeppelin/contracts/utils/Counters.sol",
+  "@openzeppelin/contracts/utils/Strings.sol",
+  "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+  "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+  "Test.sol",
+]
+`;
+
+exports[`compiles complex + delegation 1`] = `
+Array [
+  "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/interfaces/IERC165Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/interfaces/IERC2981Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+  "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721ReceiverUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/token/ERC721/IERC721Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/token/ERC721/extensions/IERC721MetadataUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/StorageSlotUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol",
+  "@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol",
+  "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+  "@openzeppelin/contracts/token/ERC721/IERC721.sol",
+  "@openzeppelin/contracts/utils/Address.sol",
+  "@openzeppelin/contracts/utils/Counters.sol",
+  "@openzeppelin/contracts/utils/Strings.sol",
+  "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+  "Test.sol",
+  "gwei-slim-nft-contracts/contracts/base/ERC721Base.sol",
+  "gwei-slim-nft-contracts/contracts/base/ERC721Delegated.sol",
+  "gwei-slim-nft-contracts/contracts/base/IBaseERC721Interface.sol",
+]
+`;
+
+exports[`compiles complex 1`] = `
+Array [
+  "@openzeppelin/contracts/access/Ownable.sol",
+  "@openzeppelin/contracts/interfaces/IERC165.sol",
+  "@openzeppelin/contracts/interfaces/IERC2981.sol",
+  "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+  "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+  "@openzeppelin/contracts/token/ERC721/IERC721.sol",
+  "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol",
+  "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol",
+  "@openzeppelin/contracts/utils/Address.sol",
+  "@openzeppelin/contracts/utils/Context.sol",
+  "@openzeppelin/contracts/utils/Counters.sol",
+  "@openzeppelin/contracts/utils/Strings.sol",
+  "@openzeppelin/contracts/utils/introspection/ERC165.sol",
+  "@openzeppelin/contracts/utils/introspection/IERC165.sol",
+  "Test.sol",
+]
+`;

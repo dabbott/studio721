@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`imports address 1`] = `
+"import \\"@openzeppelin/contracts/token/ERC721/ERC721.sol\\";
+import \\"@openzeppelin/contracts/access/Ownable.sol\\";
+import \\"@openzeppelin/contracts/security/ReentrancyGuard.sol\\";
+import \\"@openzeppelin/contracts/utils/Counters.sol\\";
+import \\"@openzeppelin/contracts/utils/Address.sol\\";"
+`;
+
+exports[`imports delegation 1`] = `
+"import {ConfigSettings} from \\"gwei-slim-nft-contracts/contracts/base/ERC721Base.sol\\";
+import {ERC721Delegated} from \\"gwei-slim-nft-contracts/contracts/base/ERC721Delegated.sol\\";
+import \\"@openzeppelin/contracts/security/ReentrancyGuard.sol\\";
+import \\"@openzeppelin/contracts/utils/Counters.sol\\";"
+`;
+
+exports[`imports delegation and access token 1`] = `
+"import {ConfigSettings} from \\"gwei-slim-nft-contracts/contracts/base/ERC721Base.sol\\";
+import {ERC721Delegated} from \\"gwei-slim-nft-contracts/contracts/base/ERC721Delegated.sol\\";
+import \\"@openzeppelin/contracts/token/ERC721/IERC721.sol\\";
+import \\"@openzeppelin/contracts/security/ReentrancyGuard.sol\\";
+import \\"@openzeppelin/contracts/utils/Counters.sol\\";"
+`;
+
+exports[`imports enumerable 1`] = `
+"import \\"@openzeppelin/contracts/token/ERC721/ERC721.sol\\";
+import \\"@openzeppelin/contracts/access/Ownable.sol\\";
+import \\"@openzeppelin/contracts/security/ReentrancyGuard.sol\\";
+import \\"@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol\\";
+import \\"@openzeppelin/contracts/utils/Counters.sol\\";"
+`;
+
+exports[`imports not enumerable 1`] = `
+"import \\"@openzeppelin/contracts/token/ERC721/ERC721.sol\\";
+import \\"@openzeppelin/contracts/access/Ownable.sol\\";
+import \\"@openzeppelin/contracts/security/ReentrancyGuard.sol\\";
+import \\"@openzeppelin/contracts/utils/Counters.sol\\";"
+`;
+
+exports[`imports royalties 1`] = `
+"import \\"@openzeppelin/contracts/token/ERC721/ERC721.sol\\";
+import \\"@openzeppelin/contracts/access/Ownable.sol\\";
+import \\"@openzeppelin/contracts/security/ReentrancyGuard.sol\\";
+import \\"@openzeppelin/contracts/interfaces/IERC2981.sol\\";
+import \\"@openzeppelin/contracts/utils/Counters.sol\\";"
+`;

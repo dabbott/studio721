@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`format contract 1`] = `
+"contract TestToken is ERC721, ReentrancyGuard, Ownable {
+  uint256 public foo = 123;
+
+  uint256 public bar = 123;
+}"
+`;
+
+exports[`format import 1`] = `"import \\"@abc\\";"`;
+
+exports[`format literal 1`] = `"123"`;
+
+exports[`format pragma 1`] = `"pragma solidity ^0.8.9;"`;
+
+exports[`format program 1`] = `
+"// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.9;
+
+import \\"@a\\";
+import \\"@b\\";
+import \\"@c\\";"
+`;
+
+exports[`format variable declaration 1`] = `"uint256 public foo = 123;"`;

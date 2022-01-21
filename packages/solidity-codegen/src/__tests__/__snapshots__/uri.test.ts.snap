@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`uri handling base uri + token id + suffix 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customBaseURI;
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+
+  function tokenURI(uint256 tokenId) public view override
+    returns (string memory)
+  {
+    return string(abi.encodePacked(super.tokenURI(tokenId), \\".json\\"));
+  }
+}"
+`;
+
+exports[`uri handling base uri and token id 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customBaseURI;
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+}"
+`;
+
+exports[`uri handling base uri only + unused parameters 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customBaseURI;
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+
+  function tokenURI() public view returns (string memory) {
+    return _baseURI();
+  }
+}"
+`;
+
+exports[`uri handling base uri only 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customBaseURI;
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+
+  function tokenURI() public view returns (string memory) {
+    return _baseURI();
+  }
+}"
+`;
+
+exports[`uri handling contract uri 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customContractURI = \\"https://example.com/contract.json\\";
+
+  function setContractURI(string memory customContractURI_) external onlyOwner {
+    customContractURI = customContractURI_;
+  }
+
+  function contractURI() public view returns (string memory) {
+    return customContractURI;
+  }
+
+  string private customBaseURI;
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+}"
+`;
+
+exports[`uri handling delegation + multiple token parameters + file suffix 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    _setBaseURI(customBaseURI_, \\"\\");
+  }
+
+  function tokenURI(uint256 tokenId) public view returns (string memory) {
+    TokenParameters memory parameters = tokenParametersMap[tokenId];
+
+    return (
+      string(
+        abi.encodePacked(
+          _tokenURI(tokenId),
+          \\".json\\",
+          \\"?\\",
+          \\"a=\\",
+          parameters.a.toString(),
+          \\"&\\",
+          \\"b=\\",
+          parameters.b.toString()
+        )
+      )
+    );
+  }
+}"
+`;
+
+exports[`uri handling delegation 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    _setBaseURI(customBaseURI_, \\"\\");
+  }
+}"
+`;
+
+exports[`uri handling multiple token parameters + file suffix 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customBaseURI;
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+
+  function tokenURI(uint256 tokenId) public view override
+    returns (string memory)
+  {
+    TokenParameters memory parameters = tokenParametersMap[tokenId];
+
+    return (
+      string(
+        abi.encodePacked(
+          super.tokenURI(tokenId),
+          \\".json\\",
+          \\"?\\",
+          \\"a=\\",
+          parameters.a.toString(),
+          \\"&\\",
+          \\"b=\\",
+          parameters.b.toString()
+        )
+      )
+    );
+  }
+}"
+`;
+
+exports[`uri handling multiple token parameters 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customBaseURI;
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+
+  function tokenURI(uint256 tokenId) public view override
+    returns (string memory)
+  {
+    TokenParameters memory parameters = tokenParametersMap[tokenId];
+
+    return (
+      string(
+        abi.encodePacked(
+          super.tokenURI(tokenId),
+          \\"?\\",
+          \\"a=\\",
+          parameters.a.toString(),
+          \\"&\\",
+          \\"b=\\",
+          parameters.b.toString()
+        )
+      )
+    );
+  }
+}"
+`;
+
+exports[`uri handling token parameters 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customBaseURI;
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+
+  function tokenURI(uint256 tokenId) public view override
+    returns (string memory)
+  {
+    TokenParameters memory parameters = tokenParametersMap[tokenId];
+
+    return (
+      string(
+        abi.encodePacked(
+          super.tokenURI(tokenId),
+          \\"?\\",
+          \\"a=\\",
+          parameters.a.toString()
+        )
+      )
+    );
+  }
+}"
+`;
+
+exports[`uri handling unused parameters 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customBaseURI;
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+}"
+`;
+
+exports[`uri handling usesUriStorage 1`] = `
+"contract Test {
+  /** URI HANDLING **/
+
+  string private customBaseURI;
+
+  mapping(uint256 => string) private tokenURIMap;
+
+  function setTokenURI(uint256 tokenId, string memory tokenURI_)
+    external
+    onlyOwner
+  {
+    tokenURIMap[tokenId] = tokenURI_;
+  }
+
+  function setBaseURI(string memory customBaseURI_) external onlyOwner {
+    customBaseURI = customBaseURI_;
+  }
+
+  function _baseURI() internal view virtual override returns (string memory) {
+    return customBaseURI;
+  }
+
+  function tokenURI(uint256 tokenId) public view override
+    returns (string memory)
+  {
+    string memory tokenURI_ = tokenURIMap[tokenId];
+
+    if (bytes(tokenURI_).length > 0) {
+      return tokenURI_;
+    }
+
+    return _baseURI();
+  }
+}"
+`;
