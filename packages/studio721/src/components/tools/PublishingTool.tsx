@@ -27,9 +27,9 @@ import {
   createEntriesFromVolume,
   findAllTokenFiles,
 } from '../../utils/collection';
-import { uploadToNFTStorage } from 'web3-utils';
 import { FormRow } from '../FormRow';
 import { FormSection } from '../FormSection';
+import { uploadToNFTStorage } from '../../utils/nftStorage';
 
 const inputStyle = {
   padding: '8px 12px',
