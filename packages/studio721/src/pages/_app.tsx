@@ -1,3 +1,4 @@
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import {
   DiscordLogoIcon,
   HStack,
@@ -109,6 +110,9 @@ export default function App({ Component, pageProps }: AppProps) {
                       },
                     }}
                   >
+                    <NavLink href="https://github.com/noya-app/studio721">
+                      <GitHubLogoIcon width={22} height={22} />
+                    </NavLink>
                     <NavLink href="https://twitter.com/dvnabbott">
                       <TwitterLogoIcon width={22} height={22} />
                     </NavLink>

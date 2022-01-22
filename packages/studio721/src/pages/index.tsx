@@ -12,6 +12,7 @@ import {
 } from 'components';
 import Head from 'next/head';
 import React from 'react';
+import { StarButton } from 'react-guidebook';
 import styled, { useTheme } from 'styled-components';
 import logoUrl from '../assets/studio721.svg';
 import blocksUrl from '../assets/studio721blocks.svg';
@@ -101,6 +102,19 @@ function ToolCard({
   );
 }
 
+const StarButtonContainer = styled.div(({ theme }) => ({
+  '& a': {
+    background: 'linear-gradient(to bottom, #444, #333)',
+    boxShadow: '0 1px 2px rgba(0,0,0,0.25)',
+  },
+  '& span': {
+    background: 'transparent',
+  },
+  '& path': {
+    fill: 'white',
+  },
+}));
+
 const Grid = styled.div({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
@@ -146,7 +160,11 @@ export default function Studio721() {
               <Heading2>Free tools for NFT creators</Heading2>
             </VStack>
           </HStack>
-          <SpacerVertical size={40} />
+          <SpacerVertical size={10} />
+          <StarButtonContainer>
+            <StarButton user="noya-app" repo="studio721" />
+          </StarButtonContainer>
+          <SpacerVertical size={30} />
           <Grid>
             <ToolCard
               name="Artkit"
