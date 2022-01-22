@@ -198,7 +198,7 @@ export function findAllTokenFiles(
 
 function replaceAbsoluteAssetWithIFPS(url: string, cid: string) {
   return url.startsWith('/assets/')
-    ? `ipfs://${cid}/${url.replace('/assets/', '')}`
+    ? `ipfs://${cid}/${encodeURI(url.replace('/assets/', ''))}`
     : url;
 }
 
