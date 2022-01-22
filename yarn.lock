@@ -15682,10 +15682,10 @@ react-error-overlay@6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
 
-react-guidebook@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/react-guidebook/-/react-guidebook-0.11.0.tgz#554f9856ef845a66bbe7a20e9b66074ced50dd4e"
-  integrity sha512-g77qWK+ScG5jMGVctnHK2/Xru0oiSMtYNIO1aCuowg/fZsJi/M+aNjmByo7/xU6p7kSzZ+kciIF6fCq2NA1hXw==
+react-guidebook@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/react-guidebook/-/react-guidebook-0.11.1.tgz#e8356822d456ae986c009e3866f34cb155317f47"
+  integrity sha512-wy5BOFfJ0f0UKnLXy1BixpqWDMnGokfHbK2iD3ekF1wn14Tfo7rKlB12jVWqH4gY2rXJfF2oMLqPMZJDjleTrg==
   dependencies:
     downshift "^6.0.5"
     javascript-playgrounds "^1.1.4"

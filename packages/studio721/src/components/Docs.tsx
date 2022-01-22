@@ -21,6 +21,7 @@ import { isExternalUrl } from 'utils';
 import guidebook from '../../guidebook';
 import { JavascriptPlaygrounds } from './JavascriptPlaygrounds';
 import { socialConfig } from '../utils/socialConfig';
+import { searchPages, searchTextMatch } from '../utils/search';
 
 export function StatelessCodeView({
   filename,
@@ -51,7 +52,7 @@ export function StatelessCodeView({
   );
 }
 
-const docsTheme = produce(defaultTheme, (draft) => {
+export const docsTheme = produce(defaultTheme, (draft) => {
   draft.sizes.inset.top = 60;
 
   draft.colors.background = '#222';
@@ -75,6 +76,17 @@ const docsTheme = produce(defaultTheme, (draft) => {
   draft.colors.button.secondaryBackground = '#444';
   draft.colors.codeBackgroundLight = 'rgba(140, 125, 253, 0.25)';
   draft.colors.neutralBackground = 'rgba(140, 125, 253, 0.25)';
+
+  draft.colors.starButton.icon = 'white';
+  draft.colors.starButton.background = 'linear-gradient(to bottom, #444, #333)';
+  draft.colors.starButton.divider = '#444';
+  draft.colors.starButton.iconBackground.top = '#444';
+  draft.colors.starButton.iconBackground.bottom = '#333';
+
+  draft.colors.search.inputBackground = '#333';
+  draft.colors.search.menuBackground = '#333';
+  draft.colors.search.menuItemBackground = '#444';
+  draft.colors.search.textHighlight = draft.colors.textDecorativeLight;
 
   draft.textStyles.body.color = draft.colors.text;
   draft.textStyles.heading1.color = draft.colors.text;
@@ -181,7 +193,13 @@ export function Docs({
           <ThemeProvider theme={docsTheme as any}>
             {/* A single child is required here for React.Children.only */}
             <MDXProvider components={MDXComponents}>
-              <Page rootNode={guidebook}>{children}</Page>
+              <Page
+                rootNode={guidebook}
+                searchPages={searchPages}
+                searchTextMatch={searchTextMatch}
+              >
+                {children}
+              </Page>
             </MDXProvider>
           </ThemeProvider>
         </LinkProvider>

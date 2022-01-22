@@ -13,9 +13,10 @@ import {
 import Head from 'next/head';
 import React from 'react';
 import { StarButton } from 'react-guidebook';
-import styled, { useTheme } from 'styled-components';
+import styled, { ThemeProvider, useTheme } from 'styled-components';
 import logoUrl from '../assets/studio721.svg';
 import blocksUrl from '../assets/studio721blocks.svg';
+import { docsTheme } from '../components/Docs';
 import { SimplePrimaryButton } from '../components/MintingCardDetails';
 import { socialConfig } from '../utils/socialConfig';
 
@@ -104,14 +105,7 @@ function ToolCard({
 
 const StarButtonContainer = styled.div(({ theme }) => ({
   '& a': {
-    background: 'linear-gradient(to bottom, #444, #333)',
     boxShadow: '0 1px 2px rgba(0,0,0,0.25)',
-  },
-  '& span': {
-    background: 'transparent',
-  },
-  '& path': {
-    fill: 'white',
   },
 }));
 
@@ -161,9 +155,11 @@ export default function Studio721() {
             </VStack>
           </HStack>
           <SpacerVertical size={10} />
-          <StarButtonContainer>
-            <StarButton user="noya-app" repo="studio721" />
-          </StarButtonContainer>
+          <ThemeProvider theme={docsTheme as any}>
+            <StarButtonContainer>
+              <StarButton user="noya-app" repo="studio721" />
+            </StarButtonContainer>
+          </ThemeProvider>
           <SpacerVertical size={30} />
           <Grid>
             <ToolCard

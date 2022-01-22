@@ -4,8 +4,7 @@ Artkit is a tool for creating assets and metadata for NFT collections.
 
 ## Features
 
-- 🤯<SpacerHorizontal inline size={20} />Create _large_ NFT collections (up to
-  20,000)
+- 🤯<SpacerHorizontal inline size={20} />Create NFT collections of _any_ size
 - ⚡️<SpacerHorizontal inline size={20} />Batch edit your NFT metadata,
   lightning fast
 - ⏩<SpacerHorizontal inline size={20} />An integrated live coding playground to
@@ -26,7 +25,7 @@ There are already a variety of tools for creating small NFT collections, where
 you can upload a single image one-at-a-time. You can even do this directly
 through most marketplaces.
 
-There are also tools for creating "pfp" profile picture collections, where you
+There are also tools for creating "pfp" (profile picture) collections, where you
 can automatically combine different image layers.
 
 However, there wasn't a general purpose NFT tool for formatting metadata and
@@ -38,8 +37,8 @@ so the other tools didn't meet my needs.
 ### Creating a Collection
 
 At its core, Artkit is a `.zip` file editor. When you create a collection,
-you're really creating a new zip file. You can save or load a collection into
-the tool at any point.
+you're really creating a new zip file. You can save or load a collection file
+into the tool at any point.
 
 > Artkit doesn't save any files to 721.so servers, so you'll have to save your
 > collection to your computer if you want to resume work on it later.
@@ -47,8 +46,8 @@ the tool at any point.
 There are currently 2 options for creating a new collection:
 
 - **Create Collection**
-- **Create Generative Art Collection** - Use this if you want to your NFT to be
-  an interactive webpage and/or if you want to generate your images previews or
+- **Create Generative Art Collection** - Use this if you want your NFT to be an
+  interactive webpage and/or if you want to generate your image previews or
   metadata attributes with JavaScript.
 
 ### `.token.json` files
@@ -63,7 +62,7 @@ populate the `{tokenId}` variable in the metadata when you upload to IPFS.
 
 One of the first things you'll want to do is set the collection size. You can do
 this from the menu button in the top left: "Tokens > Set Collection Size". This
-tool duplicates a token file of your choosing (or a blank file, if you uncheck
+tool duplicates a token file of your choosing (or an empty file, if you uncheck
 the box) until your collection has the quantity of token files you entered.
 
 > The 3 example token files created with a new project are just to illustrate
@@ -73,26 +72,28 @@ the box) until your collection has the quantity of token files you entered.
 ### Editing Token Files
 
 You can edit token files by selecting them in the file tree in the left sidebar.
-You can select multiple by holding Shift or Cmd/Ctrl. There's a shortcut for
-selecting all of your token files: right click any of the `.token.json` files
-and choose "Select Sibling Files". This is the fastest way to edit all of your
-tokens at once.
+You can select multiple by holding Shift or Cmd/Ctrl.
+
+There's a quick way to select all of your token files: right click any of the
+`.token.json` files and choose "Select Sibling Files". You can then edit all of
+your tokens at once.
 
 ### Generating Attributes and Metadata
 
 The "generative art collection" template includes a sample html/css/js setup for
-optionally generating metadata attributes and/or image previews.
+generating metadata attributes and/or image previews.
 
 The default template uses p5.js, but you can use any javascript you like. The
 javascript _is not_ bundled with webpack or another bundler, so you if you want
 to do that, you'll need to do it separately and load in the bundled js file.
 
 When you have the `index.html` file selected, you should see a "Generate Images
-& Attributes..." at the top of the page. This tool automatically generates
-images and attributes for each `.token.json` file in your collection zip.
+& Attributes..." button at the top of the page. This tool automatically
+generates images and attributes for each `.token.json` file in your collection
+zip.
 
 The way it works: Artkit bundles your code files into a single html string and
-load it into an `<iframe>`. Artkit then waits for your code to call
+loads it into an `<iframe>`. Artkit then waits for your code to call
 `artkit.saveMetadata({ ... })`, and stores the result into your collection zip
 file.
 
@@ -119,7 +120,7 @@ When you click publish, 2 things happen:
    files, those will be populated with the correct id. If you have any local
    asset file references, e.g. if the `image` of a `.token.json` refers to
    `/assets/some_file.png`, then this will be swapped with the IPFS version of
-   the file uploaded in the previous step.
+   the file `ipfs://abc...def/some_file.png` uploaded in the previous step.
 
 This 2-step process is necessary so that your metadata files can refer to the
 IPFS hash of your asset files. Of course, if you don't have any files in

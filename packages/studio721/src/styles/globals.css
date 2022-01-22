@@ -176,3 +176,11 @@ textarea::placeholder {
   color: inherit;
   opacity: 0.5;
 }
+
+/* Unset the global ul margin */
+#search-menu {
+  margin-left: unset;
+}
+#search-toggle-button {
+  padding: unset;
+}
