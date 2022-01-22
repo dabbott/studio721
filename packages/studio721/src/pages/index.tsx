@@ -167,6 +167,13 @@ export default function Studio721() {
           <SpacerVertical size={30} />
           <Grid>
             <ToolCard
+              name="Guide"
+              description="Learn how NFTs work, and how to create your own collection."
+              buttonTitle="Get started!"
+              linkTo="/guide"
+              badge="BETA"
+            />
+            <ToolCard
               name="Artkit"
               description="Create NFT artwork and metadata, and upload it to decentralized storage."
               buttonTitle="Create an NFT collection"
@@ -184,13 +191,6 @@ export default function Studio721() {
               description="Configure a minting interface that you can share with collectors."
               buttonTitle="Create minting UI"
               linkTo="/mint"
-            />
-            <ToolCard
-              name="Documentation"
-              description="Everything you need to know to make your own NFT collection."
-              buttonTitle="Browse the docs"
-              linkTo="/docs"
-              badge="BETA"
             />
           </Grid>
         </VStack>

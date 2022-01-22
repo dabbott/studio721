@@ -119,23 +119,28 @@ const MDXComponents = {
   Editor: StatelessCodeView,
 };
 
-export function Docs({ children }: { children: ReactNode }) {
+export function Docs({
+  children,
+  urlPrefix,
+}: {
+  children: ReactNode;
+  urlPrefix: string;
+}) {
   const router = useRouter();
 
   // Use `asPath`, since `pathname` will be "_error" if the page isn't found
-  const prefix = '/docs';
-  const pathname = router.pathname.slice(prefix.length);
-  const clientPath = router.asPath.slice(prefix.length);
+  const pathname = router.pathname.slice(urlPrefix.length);
+  const clientPath = router.asPath.slice(urlPrefix.length);
 
   const routerWithPrefix = useMemo(
     () => ({
       pathname,
       clientPath,
       push: (pathname: string) => {
-        router.push(`${prefix}${pathname}`);
+        router.push(`${urlPrefix}${pathname}`);
       },
     }),
-    [pathname, clientPath, router],
+    [pathname, clientPath, router, urlPrefix],
   );
 
   const LinkComponent = useMemo(() => {
@@ -146,14 +151,14 @@ export function Docs({ children }: { children: ReactNode }) {
             ? href
             : href.startsWith('#')
             ? href
-            : `${prefix}${href}`
+            : `${urlPrefix}${href}`
         }
         passHref
       >
         <Anchor style={style}>{children}</Anchor>
       </Link>
     );
-  }, [prefix]);
+  }, [urlPrefix]);
 
   const node = findNodeBySlug(guidebook, pathname.slice(1));
 

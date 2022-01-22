@@ -8,8 +8,8 @@ Much like metadata, assets can be stored on-chain (in a smart contract), on
 decentralized storage (IPFS), or on centralized storage (a custom API, or other
 hosting providers like AWS).
 
-The main thing to consider is whether you assets are _static_ or _dynamically
-generated based on user input_.
+The main thing to consider is whether your assets are _static_ or _dynamically
+generated based on user input or other factors_.
 
 Most NFTs use static assets: images, video files, or webpages. Whether an NFT
 collection has 3 video files or 3000 video files, IPFS is a great choice.
@@ -25,7 +25,7 @@ are several options:
   them on-chain. Otherwise...
 - Your assets can be an interactive webpage that you host on IPFS, and then you
   can customize the `tokenURI` function to add a query parameter
-- You can upload a file to IPFS as part of your minting site (this is what
+- You can upload a file to IPFS as part of your minting process (this is what
   https://ethblock.art/ does, for example)
 - You can use a custom API that reads from your smart contract and returns an
   asset. This is a practical but not very "web3" solution.

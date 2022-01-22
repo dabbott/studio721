@@ -6,7 +6,7 @@ const slug = require('rehype-slug');
 const workspacePath = path.join(__dirname, '..');
 
 const withGuidebook = generateGuidebook({
-  guidebookDirectory: './src/pages/docs',
+  guidebookDirectory: './src/pages/guide',
   guidebookModulePath: `./guidebook.js`,
 });
 

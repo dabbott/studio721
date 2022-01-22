@@ -24,6 +24,8 @@ import logoUrl from '../assets/studio721.svg';
 import { Docs } from '../components/Docs';
 import '../styles/globals.css';
 
+const docsUrlPrefix = '/guide';
+
 const LogoImage = styled.img({
   width: 'auto',
   height: '20px',
@@ -95,10 +97,10 @@ export default function App({ Component, pageProps }: AppProps) {
                     <NavLink href="/">
                       <LogoImage src={logoUrl} />
                     </NavLink>
+                    <NavLink href="/guide">Guide</NavLink>
                     <NavLink href="/artkit">Artkit</NavLink>
                     <NavLink href="/contract">Contract</NavLink>
                     <NavLink href="/mint">Mint</NavLink>
-                    <NavLink href="/docs">Documentation</NavLink>
                   </HStack>
                   <SpacerHorizontal size={60} />
                   <SpacerHorizontal />
@@ -124,9 +126,9 @@ export default function App({ Component, pageProps }: AppProps) {
               </HStack>
             </>
           )}
-          {url.startsWith('/docs') ? (
+          {url.startsWith(docsUrlPrefix) ? (
             <VStack id="guidebook-container" flex="1" margin={'60px 0 0 0'}>
-              <Docs>
+              <Docs urlPrefix={docsUrlPrefix}>
                 <Component {...pageProps} />
               </Docs>
             </VStack>
