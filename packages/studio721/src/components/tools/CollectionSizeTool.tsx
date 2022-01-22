@@ -13,8 +13,8 @@ function validateSize(size: string) {
     ? 'Invalid number'
     : !Number.isInteger(value)
     ? 'Size must be a whole number'
-    : value > 10000
-    ? 'This max supported size for this tool is 10000'
+    : value > 20000
+    ? 'This max supported size for this tool is 20000'
     : null;
 
   return { value, error };

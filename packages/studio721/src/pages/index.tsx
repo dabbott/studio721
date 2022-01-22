@@ -171,14 +171,12 @@ export default function Studio721() {
               description="Learn how NFTs work, and how to create your own collection."
               buttonTitle="Get started!"
               linkTo="/guide"
-              badge="BETA"
             />
             <ToolCard
               name="Artkit"
               description="Create NFT artwork and metadata, and upload it to decentralized storage."
               buttonTitle="Create an NFT collection"
               linkTo="/artkit"
-              badge="BETA"
             />
             <ToolCard
               name="Contract"

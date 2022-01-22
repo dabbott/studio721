@@ -167,10 +167,10 @@ export function Docs({
       <Head>
         <title>Studio 721 Docs</title>
         {getHeadTags({
-          pageTitle: node?.title ?? 'Studio 721 Docs',
+          pageTitle: node?.title ?? 'Studio 721 Guide',
           pageDescription:
             node?.subtitle ??
-            'Everything you need to know to start creating NFTs.',
+            'Learn how NFTs work, and how to create your own collection.',
           config: socialConfig,
         })}
         <link rel="icon" href="/favicon.ico" />
