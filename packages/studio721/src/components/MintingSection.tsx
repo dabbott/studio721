@@ -572,7 +572,8 @@ export const MintingSection = memo(function MintingSection({
         tooltip={
           <>
             This is a technique used by OpenSea to enable users to list their
-            NFTs without paying transaction fees. Read more in the{' '}
+            NFTs without paying transaction fees ("gasless listing"). Read more
+            in the{' '}
             <LinkChip
               openInNewTab
               href="https://docs.opensea.io/docs/1-structuring-your-smart-contract"
@@ -587,12 +588,15 @@ export const MintingSection = memo(function MintingSection({
             >
               Example Code{' '}
             </LinkChip>
+            <SpacerVertical size={20} />
+            This option isn't currently supported when using the{' '}
+            <em>reduced deployment costs</em> option.
           </>
         }
       >
         <Checkbox
           variant="dark"
-          disabled={disabled}
+          disabled={disabled || config.usesDelegatedContract}
           checked={!!config.approvalProxyAddress}
           onCheckedChange={(value: boolean) => {
             dispatch({

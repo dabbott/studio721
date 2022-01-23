@@ -824,6 +824,7 @@ export function reducer(state: State, action: Action): State {
       return produce(state, (draft) => {
         draft.config.usesDelegatedContract = value;
         draft.config.enumerable = false;
+        draft.config.approvalProxyAddress = undefined;
         draft.compiler = resetForConfigChange.compiler;
         draft.deployment = resetForConfigChange.deployment;
       });
