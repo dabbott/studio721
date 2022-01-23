@@ -22,6 +22,7 @@ import guidebook from '../../guidebook';
 import { JavascriptPlaygrounds } from './JavascriptPlaygrounds';
 import { socialConfig } from '../utils/socialConfig';
 import { searchPages, searchTextMatch } from '../utils/search';
+import { YouTube } from './YouTube';
 
 export function StatelessCodeView({
   filename,
@@ -129,6 +130,7 @@ const MDXComponents = {
     </ScrollableTableContainer>
   ),
   Editor: StatelessCodeView,
+  YouTube,
 };
 
 export function Docs({

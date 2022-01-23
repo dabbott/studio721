@@ -142,28 +142,34 @@ export default function Studio721() {
           flex="1 1 0px"
           alignItems="center"
           justifyContent="center"
-          padding={20}
+          padding={'60px 20px'}
         >
-          <HStack alignItems="center" gap={20}>
-            <VStack background="rgba(0,0,0,0.2)" borderRadius={4} padding={10}>
-              <BlocksImage src={blocksUrl} />
-            </VStack>
-            <VStack>
-              <LogoImage src={logoUrl} />
-              <SpacerVertical size={10} />
-              <Heading2>Free tools for NFT creators</Heading2>
-            </VStack>
-          </HStack>
-          <SpacerVertical size={10} />
-          <ThemeProvider theme={docsTheme as any}>
-            <StarButtonContainer>
-              <StarButton user="noya-app" repo="studio721" />
-            </StarButtonContainer>
-          </ThemeProvider>
+          <VStack alignItems="center" justifyContent="center">
+            <HStack alignItems="center" gap={20}>
+              <VStack
+                background="rgba(0,0,0,0.2)"
+                borderRadius={4}
+                padding={10}
+              >
+                <BlocksImage src={blocksUrl} />
+              </VStack>
+              <VStack>
+                <LogoImage src={logoUrl} />
+                <SpacerVertical size={10} />
+                <Heading2>Free tools for NFT creators</Heading2>
+              </VStack>
+            </HStack>
+            <SpacerVertical size={10} />
+            <ThemeProvider theme={docsTheme as any}>
+              <StarButtonContainer>
+                <StarButton user="noya-app" repo="studio721" />
+              </StarButtonContainer>
+            </ThemeProvider>
+          </VStack>
           <SpacerVertical size={30} />
           <Grid>
             <ToolCard
-              name="Guide"
+              name="Guide & Walkthough Video"
               description="Learn how NFTs work, and how to create your own collection."
               buttonTitle="Get started!"
               linkTo="/guide"

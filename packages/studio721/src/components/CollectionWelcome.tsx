@@ -43,20 +43,18 @@ export function CollectionWelcome({
         <SpacerVertical size={20} />
         <Regular>
           Artkit is a tool for creating assets and metadata for NFT collections.
-          Artkit is designed for creating <em>large</em> NFT collections (100+),
-          rather than uploading a single image one-at-a-time for small
-          collections. There's a built-in (but optional) html/css/js environment
-          for generating images and metadata attributes.
         </Regular>
         <SpacerVertical size={20} />
         <Regular>
-          Your data is stored locally <em>in your browser</em> until you're
-          ready to publish, at which point it's uploaded to{' '}
-          <LinkChip href="https://ipfs.io" openInNewTab>
-            IPFS
-          </LinkChip>
-          . You can save and load this data as a zip file at any time —{' '}
+          You can save and load your collection as a zip file at any time —{' '}
           <strong>make sure to save before quitting!</strong>
+        </Regular>
+        <SpacerVertical size={20} />
+        <Regular>
+          Not sure where to start? There's a{' '}
+          <LinkChip href="/guide/studio/artkit">
+            guide and video walkthrough!
+          </LinkChip>
         </Regular>
         <SpacerVertical size={30} />
         {isLoading ? (

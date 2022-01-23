@@ -438,7 +438,10 @@ export default function NFTStudio() {
                 NFT smart contracts. Studio 721 doesn{"'"}t host your assets or
                 metadata; use your favorite hosting service and link it to your
                 NFT via {'"'}
-                Token URI{'"'}. <em>Beta software; use at your own risk.</em>
+                Token URI{'"'}. Not sure where to start? There's a{' '}
+                <LinkChip href="/guide/studio/contract">
+                  video walkthrough!
+                </LinkChip>
               </Regular>
               <Regular>
                 Created by <TwitterChip value="@dvnabbott" />
