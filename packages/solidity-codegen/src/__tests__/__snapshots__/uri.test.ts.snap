@@ -52,7 +52,7 @@ exports[`uri handling base uri only + unused parameters 1`] = `
     return customBaseURI;
   }
 
-  function tokenURI() public view returns (string memory) {
+  function tokenURI(uint256) public view override returns (string memory) {
     return _baseURI();
   }
 }"
@@ -72,7 +72,7 @@ exports[`uri handling base uri only 1`] = `
     return customBaseURI;
   }
 
-  function tokenURI() public view returns (string memory) {
+  function tokenURI(uint256) public view override returns (string memory) {
     return _baseURI();
   }
 }"

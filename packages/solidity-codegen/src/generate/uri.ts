@@ -191,16 +191,15 @@ export function generateURIHandling(
           functionDeclaration({
             name: 'tokenURI',
             arguments:
+              // We need to include the parameter, even when we don't use it,
+              // so that the function has the right signature
               shouldReturnSimpleBaseURI && !config.usesUriStorage
-                ? []
+                ? ['uint256']
                 : ['uint256 tokenId'],
             modifiers: [
               'public',
               'view',
-              ...((shouldReturnSimpleBaseURI && !config.usesUriStorage) ||
-              config.usesDelegatedContract
-                ? []
-                : ['override']),
+              ...(config.usesDelegatedContract ? [] : ['override']),
             ],
             returns: { typeAnnotation: 'string', modifiers: ['memory'] },
             body: [
