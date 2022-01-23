@@ -196,9 +196,15 @@ export function findAllTokenFiles(
   });
 }
 
-function replaceAbsoluteAssetWithIFPS(url: string, cid: string) {
+function replaceAbsoluteAssetWithIFPS(
+  url: string,
+  cid: string,
+  protocol: 'ipfs' | 'https',
+) {
   return url.startsWith('/assets/')
-    ? `ipfs://${cid}/${encodeURI(url.replace('/assets/', ''))}`
+    ? `${
+        protocol === 'https' ? 'https://ipfs.io/ipfs/' : 'ipfs://'
+      }${cid}/${encodeURI(url.replace('/assets/', ''))}`
     : url;
 }
 
@@ -223,12 +229,14 @@ export function createEntriesFromVolume(
           populated.image = replaceAbsoluteAssetWithIFPS(
             populated.image,
             assetsRootCID,
+            'ipfs',
           );
         }
         if (populated.animation_url) {
           populated.animation_url = replaceAbsoluteAssetWithIFPS(
             populated.animation_url,
             assetsRootCID,
+            'https',
           );
         }
       }
