@@ -41,11 +41,26 @@ import {
   mintStyleReducer,
   MintStyleState,
 } from 'state';
+import delegatedAbi from '../assets/slim-gwei-abi.json';
 
 interface ServerProps {
   isAddressLocked: boolean;
   isCreatorLocked: boolean;
   abi: any;
+}
+
+// If this is a delegated contract, we need to add in the delegated
+// ABI to be able to call those functions. This primitive check for
+// `implementation` could be improved, but is probably fine for now
+//
+// Currently it seems ether.actor doesn't support calling the delegated
+// functions, so this will only work if there's a connected wallet
+function addDelegatedImplementation(abi: any) {
+  const isDelegatedContract = abi.find(
+    (item: any) => item.name === 'implementation',
+  );
+
+  return isDelegatedContract ? [...abi, ...delegatedAbi] : abi;
 }
 
 export default function Mint({
@@ -92,12 +107,12 @@ export default function Mint({
 
   const abi = useMemo(() => {
     if (serverAbi) {
-      return new Interface(serverAbi);
+      return new Interface(addDelegatedImplementation(serverAbi));
     }
 
     if (etherActorAbi.type !== 'success') return;
 
-    return new Interface(etherActorAbi.value.abi);
+    return new Interface(addDelegatedImplementation(etherActorAbi.value.abi));
   }, [etherActorAbi, serverAbi]);
 
   const contract = useMemo(() => {

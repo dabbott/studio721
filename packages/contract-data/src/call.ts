@@ -5,12 +5,17 @@ import { ChainId } from '@openpalette/contract';
 import { getEtherActorBaseURL } from 'web3-utils';
 import { FunctionOutput } from './types';
 
-export async function fetchEthorActorData(
-  chainId: ChainId,
-  address: string,
-  fragment: FunctionFragment,
-  args: any[] = [],
-): Promise<FunctionOutput> {
+export async function fetchEthorActorData({
+  chainId,
+  address,
+  fragment,
+  args = [],
+}: {
+  chainId: ChainId;
+  address: string;
+  fragment: FunctionFragment;
+  args: any[];
+}): Promise<FunctionOutput> {
   const components = [
     getEtherActorBaseURL(chainId),
     address,
@@ -21,6 +26,23 @@ export async function fetchEthorActorData(
   const response = await fetch(components.join('/'));
 
   const result = await response.text();
+
+  let json: any;
+
+  try {
+    json = JSON.parse(result);
+  } catch (e) {
+    //
+  }
+
+  if (
+    typeof json === 'object' &&
+    json !== null &&
+    typeof json.statusCode === 'number' &&
+    json.statusCode > 200
+  ) {
+    throw new Error('Failed to fetch contract data');
+  }
 
   if (fragment.outputs && fragment.outputs.length > 0) {
     const outputType = fragment.outputs[0].type;
@@ -47,9 +69,16 @@ export async function callReadOnlyContractFunction<T = FunctionOutput>(
     throw new Error('Not a read-only function');
   }
 
-  // Try fetching from both ether.actor and the connected provider
+  // Try fetching from both ether.actor and the connected provider.
+  // Sometimes one will fail, so this gives a better change of
+  // getting data quickly.
   const output: T = await Promise.any([
-    fetchEthorActorData(chainId, contract.address, fragment, args),
+    fetchEthorActorData({
+      chainId,
+      address: contract.address,
+      fragment,
+      args: args ?? [],
+    }),
     ...(contract.provider && providerChainId === chainId
       ? [contract.callStatic[fragment.name](...(args || []))]
       : []),
