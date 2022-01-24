@@ -2,9 +2,10 @@ import { Node, path, Volume } from 'imfs';
 import { bundle } from 'packly';
 import { useCallback, useMemo } from 'react';
 import { CollectionAction, CollectionState } from 'state';
-import { getEntryFile } from '../../utils/entryFile';
+import { getEntryFile } from '../entryFile';
 import { createFileData, FileData, fileDataToString } from 'files';
 import { JavascriptPlaygrounds } from '../JavascriptPlaygrounds';
+import React from 'react';
 
 function getPlaygroundFiles(volume: Node<FileData>, entry: string) {
   const files: Record<string, string> = {};

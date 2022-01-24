@@ -2,6 +2,7 @@ import { VStack } from 'components';
 import { path } from 'imfs';
 import Playground from 'javascript-playgrounds';
 import { PublicOptions } from 'javascript-playgrounds/dist/src/utils/options';
+import React from 'react';
 import { useEffect } from 'react';
 import { useTheme } from 'styled-components';
 

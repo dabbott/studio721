@@ -5,10 +5,24 @@ import {
   GridIcon,
   ImageIcon,
 } from '@radix-ui/react-icons';
+import {
+  isCodeFile,
+  isImageFile,
+  isTokenFile,
+  isWebsite,
+} from 'artkit-browser';
+import { createEntriesFromVolume } from 'artkit-create';
 import { fileOpen, fileSave } from 'browser-fs-access';
 import { Dialog, FolderIcon } from 'components';
 import { createSectionedMenu, ListView, TreeView } from 'designsystem';
 import { MenuItem } from 'designsystem/src/components/internal/Menu';
+import {
+  createCarBlob,
+  createFileData,
+  FileData,
+  FileSystem,
+  Zip,
+} from 'files';
 import { Entries, Node, path, Volume } from 'imfs';
 import { getCurrentPlatform } from 'keymap';
 import React, {
@@ -19,22 +33,10 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { CollectionAction, CollectionState } from 'state';
 import { useTheme } from 'styled-components';
 import { copyToClipboard } from 'utils';
-import { CollectionAction, CollectionState } from 'state';
-import {
-  FileSystem,
-  Zip,
-  createFileData,
-  FileData,
-  createCarBlob,
-} from 'files';
-import { isCodeFile } from './browser/CodeBrowser';
-import { isImageFile } from './browser/ImageBrowser';
-import { isTokenFile } from './browser/TokenBrowser';
-import { isWebsite } from './browser/WebsiteBrowser';
 import { PublishingTool } from './tools/PublishingTool';
-import { createEntriesFromVolume } from '../utils/collection';
 
 type FlatFileNode = {
   filename: string;

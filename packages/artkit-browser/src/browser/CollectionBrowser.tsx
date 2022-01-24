@@ -3,7 +3,7 @@ import { path, Volume } from 'imfs';
 import React, { useMemo } from 'react';
 import { AutoSizer } from 'react-virtualized';
 import { CollectionAction, CollectionState, parseTokenMetadata } from 'state';
-import { FileBrowserView } from './FileSystemBrowser';
+import { FileBrowserView } from '../types';
 import { TokenCard } from './TokenCard';
 
 function CollectionView({

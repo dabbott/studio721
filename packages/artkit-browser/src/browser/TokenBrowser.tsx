@@ -4,7 +4,7 @@ import React from 'react';
 import { AutoSizer } from 'react-virtualized';
 import { CollectionAction, CollectionState, parseTokenMetadata } from 'state';
 import { TokenInspector } from '../inspector/TokenInspector';
-import { FileBrowserView } from './FileSystemBrowser';
+import { FileBrowserView } from '../types';
 import { TokenCard } from './TokenCard';
 
 export function TokenView({

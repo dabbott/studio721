@@ -1,13 +1,13 @@
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
-import { Dialog, HStack, SpacerHorizontal } from 'components';
-import { Button, createSectionedMenu, DropdownMenu } from 'designsystem';
-import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
-import { HistoryAction, HistoryState } from 'state';
 import {
   createBasicMetadataVolume,
   openCollectionFile,
   saveCollectionFile,
-} from '../utils/collection';
+} from 'artkit-create';
+import { Dialog, HStack, SpacerHorizontal } from 'components';
+import { Button, createSectionedMenu, DropdownMenu } from 'designsystem';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
+import { HistoryAction, HistoryState } from 'state';
 import { CollectionSizeTool } from './tools/CollectionSizeTool';
 import { PublishingTool } from './tools/PublishingTool';
 

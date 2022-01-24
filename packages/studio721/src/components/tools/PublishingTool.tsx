@@ -4,9 +4,12 @@ import {
   DotsHorizontalIcon,
   ExclamationTriangleIcon,
 } from '@radix-ui/react-icons';
+import { createEntriesFromVolume, findAllTokenFiles } from 'artkit-create';
 import {
   Button as RainbowButton,
   Code,
+  FormRow,
+  FormSection,
   Heading3,
   HStack,
   LinkChip,
@@ -17,17 +20,11 @@ import {
   VStack,
 } from 'components';
 import { Button, InputField } from 'designsystem';
+import { createCarBlob, FileData, fileDataToBytes } from 'files';
 import { Node, Volume } from 'imfs';
 import React, { ReactNode, useReducer, useRef, useState } from 'react';
-import { useTheme } from 'styled-components';
 import { PublishingState, publishingStateReducer } from 'state';
-import { createCarBlob } from 'files';
-import { FileData, fileDataToBytes } from 'files';
-import {
-  createEntriesFromVolume,
-  findAllTokenFiles,
-} from '../../utils/collection';
-import { FormRow, FormSection } from 'components';
+import { useTheme } from 'styled-components';
 import { uploadToNFTStorage } from '../../utils/nftStorage';
 
 const inputStyle = {

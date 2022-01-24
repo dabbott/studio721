@@ -2,6 +2,7 @@ import { VStack } from 'components';
 import { Node } from 'imfs';
 import { FileData } from 'files';
 import { ImagePreview, useTokenImageUrl } from '../browser/TokenCard';
+import React from 'react';
 
 export function ImageInspector({
   filename,

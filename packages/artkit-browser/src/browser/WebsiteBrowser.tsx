@@ -3,9 +3,10 @@ import { Dialog, SpacerHorizontal, VStack } from 'components';
 import { Button } from 'designsystem';
 import { path } from 'imfs';
 import React, { useState } from 'react';
+// TODO: Improve package structure so we don't have to import like this
+import { GenerateMetadataTool } from '../../../studio721/src/components/tools/GenerateMetadataTool';
 import { WebsiteInspector } from '../inspector/WebsiteInspector';
-import { GenerateMetadataTool } from '../tools/GenerateMetadataTool';
-import { FileBrowserProps, FileBrowserView } from './FileSystemBrowser';
+import { FileBrowserProps, FileBrowserView } from '../types';
 
 function WebsiteView({ state, dispatch }: FileBrowserProps) {
   return (

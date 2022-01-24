@@ -8,6 +8,7 @@ export * from './CodeHighlight';
 export * from './ConnectButton';
 export * from './Dialog';
 export * from './Divider';
+export * from './EditableTextArea';
 export * from './FileDropTarget';
 export * from './FormRow';
 export * from './FormRowError';

@@ -1,6 +1,7 @@
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 import { FileIcon, Pencil1Icon } from '@radix-ui/react-icons';
 import {
+  EditableTextArea,
   FileDropTarget,
   HStack,
   Label,
@@ -14,7 +15,6 @@ import { Node, path, Volume } from 'imfs';
 import React, { useEffect, useMemo, useState } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { NFTMetadata, populateTemplateMetadata } from 'web3-utils';
-import { EditableTextArea } from '../MintingCardDetails';
 
 export const ImagePreview = styled.img({
   width: '100%',

@@ -1,4 +1,12 @@
 import {
+  CodeBrowser,
+  CollectionBrowser,
+  ImageBrowser,
+  NoPreviewBrowser,
+  TokenBrowser,
+  WebsiteBrowser,
+} from 'artkit-browser';
+import {
   AutoSizer,
   Divider,
   HStack,
@@ -7,28 +15,10 @@ import {
   VStack,
 } from 'components';
 import React from 'react';
+import { HistoryAction, HistoryState } from 'state';
 import { useTheme } from 'styled-components';
-import { CollectionState, HistoryAction, HistoryState } from 'state';
-import { FileTree } from '../FileTree';
-import { Menubar } from '../Menubar';
-import { CodeBrowser } from './CodeBrowser';
-import { CollectionBrowser } from './CollectionBrowser';
-import { ImageBrowser } from './ImageBrowser';
-import { NoPreviewBrowser } from './NoPreviewBrowser';
-import { TokenBrowser } from './TokenBrowser';
-import { WebsiteBrowser } from './WebsiteBrowser';
-
-export type FileBrowserProps = {
-  state: CollectionState;
-  dispatch: (action: HistoryAction) => void;
-};
-
-export type FileBrowserView = {
-  match(state: CollectionState): boolean;
-  title(state: CollectionState): string;
-  View: React.FunctionComponent<FileBrowserProps>;
-  Toolbar?: React.FunctionComponent<FileBrowserProps>;
-};
+import { FileTree } from './FileTree';
+import { Menubar } from './Menubar';
 
 const browsers = [
   TokenBrowser,

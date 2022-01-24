@@ -7,6 +7,9 @@ import {
   Body,
   Checkbox,
   Divider,
+  EditableTextArea,
+  FormRow,
+  FormSection,
   Heading1,
   HStack,
   Label,
@@ -15,16 +18,10 @@ import {
   VStack,
 } from 'components';
 import { useChainId, useWeb3API } from 'contexts';
+import { priceToString, useReadOnlyContractData } from 'contract-data';
 import { Button, InputField, Popover, Select, Stepper } from 'designsystem';
 import { mapPromiseState, PromiseState } from 'hooks';
 import React, { CSSProperties, ReactNode, useState } from 'react';
-import styled, { useTheme } from 'styled-components';
-import {
-  FunctionFragmentFilters,
-  getAllFunctionFragments,
-  getFirstFunctionFragment,
-  upperFirst,
-} from 'utils';
 import {
   AssetType,
   CoverAsset,
@@ -33,8 +30,13 @@ import {
   MintStyleAction,
   MintStyleState,
 } from 'state';
-import { priceToString, useReadOnlyContractData } from 'contract-data';
-import { FormRow, FormSection } from 'components';
+import styled, { useTheme } from 'styled-components';
+import {
+  FunctionFragmentFilters,
+  getAllFunctionFragments,
+  getFirstFunctionFragment,
+  upperFirst,
+} from 'utils';
 import { isMainnetOrPolygon } from 'web3-utils';
 
 export const SimplePrimaryButton = styled.button({
@@ -180,62 +182,6 @@ function useMintingData({
     unsupportedMintParameters,
     mintFunction,
   };
-}
-
-const StyledTextArea = styled.textarea({
-  background: 'none',
-  appearance: 'none',
-  resize: 'none',
-  position: 'absolute',
-  inset: 0,
-  width: '100%',
-  height: '100%',
-  overflow: 'hidden',
-  fontFamily: 'inherit',
-  fontWeight: 'inherit',
-  fontSize: 'inherit',
-  lineHeight: 'inherit',
-  color: 'inherit',
-  outline: '1px solid rgba(255,255,255,0.2)',
-
-  '&::placeholder': {
-    color: 'inherit',
-    opacity: 0.5,
-  },
-});
-
-export function EditableTextArea({
-  editing,
-  value,
-  placeholder,
-  onChange,
-}: {
-  editing: boolean;
-  value: string;
-  placeholder?: string;
-  onChange: (value: string) => void;
-}) {
-  return editing ? (
-    <>
-      <StyledTextArea
-        value={value}
-        placeholder={placeholder}
-        onChange={(event) => {
-          onChange(event.target.value);
-        }}
-      />
-      <span
-        style={{
-          visibility: 'hidden',
-          whiteSpace: 'pre-wrap',
-        }}
-      >
-        {!value || value.endsWith('\n') ? `${value} ` : value}
-      </span>
-    </>
-  ) : (
-    <>{value || ''}</>
-  );
 }
 
 function ItemMetadataRow({

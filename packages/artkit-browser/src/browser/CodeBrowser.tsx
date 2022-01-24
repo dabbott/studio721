@@ -1,9 +1,9 @@
 import { VStack } from 'components';
+import { createFileData, fileDataToString } from 'files';
 import { path, Volume } from 'imfs';
 import React, { useCallback, useMemo } from 'react';
-import { createFileData, fileDataToString } from 'files';
 import { JavascriptPlaygrounds } from '../JavascriptPlaygrounds';
-import { FileBrowserProps, FileBrowserView } from './FileSystemBrowser';
+import { FileBrowserProps, FileBrowserView } from '../types';
 
 function CodeView({ state, dispatch }: FileBrowserProps) {
   const { volume } = state;

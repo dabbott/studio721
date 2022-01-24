@@ -2,7 +2,7 @@ import { Heading2, VStack } from 'components';
 import { path } from 'imfs';
 import React from 'react';
 import { CollectionAction, CollectionState } from 'state';
-import { FileBrowserView } from './FileSystemBrowser';
+import { FileBrowserView } from '../types';
 
 function NoPreviewView({
   state,

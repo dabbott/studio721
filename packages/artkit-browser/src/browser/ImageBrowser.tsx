@@ -3,7 +3,7 @@ import { path } from 'imfs';
 import React from 'react';
 import { CollectionAction, CollectionState } from 'state';
 import { ImageInspector } from '../inspector/ImageInspector';
-import { FileBrowserView } from './FileSystemBrowser';
+import { FileBrowserView } from '../types';
 
 function ImageView({
   state,

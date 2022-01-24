@@ -16,6 +16,13 @@
     "downlevelIteration": true,
     "incremental": true
   },
-  "include": ["next-env.d.ts", "guidebook.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "guidebook.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "../artkit-browser/src/entryFile.ts",
+    "../artkit-browser/JavascriptPlaygrounds.tsx"
+  ],
   "exclude": ["node_modules"]
 }
