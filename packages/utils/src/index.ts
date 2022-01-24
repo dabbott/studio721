@@ -13,6 +13,7 @@ export * from './upperFirst';
 export * from './ethersUtils';
 export * from './unique';
 export * from './getIncrementedName';
+export * from './getMultiValue';
 export * from './groupBy';
 export * from './memoize';
 export * from './clipboard';

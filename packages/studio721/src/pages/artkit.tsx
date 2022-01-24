@@ -1,10 +1,10 @@
 import { getHeadTags } from 'components';
 import Head from 'next/head';
 import React, { useEffect, useReducer } from 'react';
-import { FileSystemBrowser } from '../components/browser/FileSystemBrowser';
-import { CollectionWelcome } from '../components/CollectionWelcome';
+import { CollectionWelcome } from '../components/artkit/CollectionWelcome';
 import { createInitialHistoryState, historyReducer } from 'state';
 import { socialConfig } from '../utils/socialConfig';
+import { FileSystemBrowser } from '../components/artkit/FileSystemBrowser';
 
 export default function Collection() {
   useEffect(() => {

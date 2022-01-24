@@ -12,6 +12,7 @@ import {
   Body,
   ConnectionDisplay,
   Divider,
+  FormRow,
   Heading2,
   Heading3,
   HStack,
@@ -26,22 +27,21 @@ import { parseCSSColor } from 'csscolorparser-ts';
 import { Button, InputField } from 'designsystem';
 import { useFetch } from 'hooks';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { getEtherActorBaseURL, getEtherscanAddressUrl } from 'web3-utils';
-import { BackgroundFill } from '../components/BackgroundFill';
-import { ColorPicker } from '../components/ColorPicker';
-import { FormRow } from '../components/FormRow';
-import { MintingCard } from '../components/MintingCard';
-import { SimplePrimaryButton } from '../components/MintingCardDetails';
-import {
-  decodeConfigParameter,
-  useUrlConfigReducer,
-} from '../hooks/useUrlConfigReducer';
 import {
   createInitialMintStyle,
   mintStyleReducer,
   MintStyleState,
 } from 'state';
+import { getEtherActorBaseURL, getEtherscanAddressUrl } from 'web3-utils';
 import delegatedAbi from '../assets/slim-gwei-abi.json';
+import { BackgroundFill } from '../components/mint/BackgroundFill';
+import { ColorPicker } from '../components/mint/ColorPicker';
+import { MintingCard } from '../components/mint/MintingCard';
+import { SimplePrimaryButton } from '../components/mint/MintingCardDetails';
+import {
+  decodeConfigParameter,
+  useUrlConfigReducer,
+} from '../hooks/useUrlConfigReducer';
 
 interface ServerProps {
   isAddressLocked: boolean;

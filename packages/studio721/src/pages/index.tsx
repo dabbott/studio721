@@ -12,12 +12,12 @@ import {
 } from 'components';
 import Head from 'next/head';
 import React from 'react';
-import { StarButton } from 'react-guidebook';
-import styled, { ThemeProvider, useTheme } from 'styled-components';
+import { GuidebookThemeProvider, StarButton } from 'react-guidebook';
+import styled, { useTheme } from 'styled-components';
 import logoUrl from '../assets/studio721.svg';
 import blocksUrl from '../assets/studio721blocks.svg';
-import { docsTheme } from '../components/Docs';
-import { SimplePrimaryButton } from '../components/MintingCardDetails';
+import { docsTheme } from '../components/docs/Docs';
+import { SimplePrimaryButton } from '../components/mint/MintingCardDetails';
 import { socialConfig } from '../utils/socialConfig';
 
 const LogoImage = styled.img({
@@ -69,7 +69,7 @@ function ToolCard({
         },
       }}
     >
-      <HStack>
+      <HStack alignItems={'center'}>
         <Heading2>{name}</Heading2>
         {badge && (
           <>
@@ -103,11 +103,11 @@ function ToolCard({
   );
 }
 
-const StarButtonContainer = styled.div(({ theme }) => ({
+const StarButtonContainer = styled.div({
   '& a': {
     boxShadow: '0 1px 2px rgba(0,0,0,0.25)',
   },
-}));
+});
 
 const Grid = styled.div({
   display: 'grid',
@@ -160,11 +160,11 @@ export default function Studio721() {
               </VStack>
             </HStack>
             <SpacerVertical size={10} />
-            <ThemeProvider theme={docsTheme as any}>
+            <GuidebookThemeProvider theme={docsTheme}>
               <StarButtonContainer>
                 <StarButton user="noya-app" repo="studio721" />
               </StarButtonContainer>
-            </ThemeProvider>
+            </GuidebookThemeProvider>
           </VStack>
           <SpacerVertical size={30} />
           <Grid>

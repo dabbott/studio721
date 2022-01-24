@@ -1,0 +1,9 @@
+{
+  "name": "artkit-collection",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "license": "UNLICENSED",
+  "files": [
+    "README.md"
+  ]
+}
