@@ -1,5 +1,12 @@
 import { PlusIcon } from '@radix-ui/react-icons';
-import { HStack, Small, SpacerHorizontal, SpacerVertical } from 'components';
+import {
+  HStack,
+  Small,
+  SpacerHorizontal,
+  SpacerVertical,
+  FormSection,
+  InfoHoverCard,
+} from 'components';
 import {
   ArrayController,
   Button,
@@ -9,8 +16,6 @@ import {
 } from 'designsystem';
 import React, { memo, ReactNode, useCallback } from 'react';
 import { Action, TokenParameter, TokenParameterType } from 'state';
-import { FormSection } from './FormSection';
-import { InfoHoverCard } from './InfoHoverCard';
 
 export const ParameterRow = memo(function ParameterRow({
   id,

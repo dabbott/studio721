@@ -18,9 +18,7 @@ import { getEntryFile } from '../../utils/entryFile';
 import { fileDataToBytes } from 'files';
 import { findAllTokenFiles } from '../../utils/collection';
 import { ImagePreview } from '../browser/TokenCard';
-import { FormRow } from '../FormRow';
-import { FormSection } from '../FormSection';
-import { InfoHoverCard } from '../InfoHoverCard';
+import { FormRow, FormSection, InfoHoverCard } from 'components';
 
 type TokensCategory = 'referenced' | 'all';
 

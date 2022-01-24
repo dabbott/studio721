@@ -19,9 +19,7 @@ import { generateURI, parseURITemplate } from 'solidity-codegen';
 import { Action, ContractConfigState } from 'state';
 import { encodeQueryParameters } from 'utils';
 import { getCurrencySymbol } from 'contract-data';
-import { FormRow } from './FormRow';
-import { FormRowError } from './FormRowError';
-import { InfoHoverCard } from './InfoHoverCard';
+import { FormRow, FormRowError, InfoHoverCard } from 'components';
 
 interface Props {
   config: ContractConfigState;

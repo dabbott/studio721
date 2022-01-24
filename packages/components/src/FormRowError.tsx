@@ -1,4 +1,5 @@
 import { HStack, Small } from 'components';
+import React from 'react';
 import { ReactNode } from 'react';
 
 export function FormRowError({ children }: { children: ReactNode }) {

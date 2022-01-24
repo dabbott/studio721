@@ -1,11 +1,9 @@
 import React, { memo } from 'react';
 import { LinkChip } from 'components';
 import { SpacerVertical } from 'components';
-import { FormRow } from './FormRow';
-import { FormSection } from './FormSection';
+import { FormRow, FormSection, InfoHoverCard } from 'components';
 import { InputField } from 'designsystem';
 import { Action } from 'state';
-import { InfoHoverCard } from './InfoHoverCard';
 
 interface Props {
   etherscanApiKey: string;

@@ -27,8 +27,7 @@ import {
   createEntriesFromVolume,
   findAllTokenFiles,
 } from '../../utils/collection';
-import { FormRow } from '../FormRow';
-import { FormSection } from '../FormSection';
+import { FormRow, FormSection } from 'components';
 import { uploadToNFTStorage } from '../../utils/nftStorage';
 
 const inputStyle = {

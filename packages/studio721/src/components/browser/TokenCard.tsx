@@ -12,9 +12,8 @@ import { Button } from 'designsystem';
 import { FileData, fileDataToBytes } from 'files';
 import { Node, path, Volume } from 'imfs';
 import React, { useEffect, useMemo, useState } from 'react';
-import { populateTemplate } from 'solidity-codegen';
 import styled, { useTheme } from 'styled-components';
-import { NFTMetadata } from 'web3-utils';
+import { NFTMetadata, populateTemplateMetadata } from 'web3-utils';
 import { EditableTextArea } from '../MintingCardDetails';
 
 export const ImagePreview = styled.img({
@@ -23,30 +22,6 @@ export const ImagePreview = styled.img({
   objectFit: 'contain',
   objectPosition: 'center',
 });
-
-export function populateTemplateMetadata(
-  metadata: NFTMetadata,
-  parameters: Record<string, string>,
-): NFTMetadata {
-  return {
-    ...metadata,
-    ...(metadata.name !== undefined && {
-      name: populateTemplate(metadata.name, parameters),
-    }),
-    ...(metadata.description !== undefined && {
-      description: populateTemplate(metadata.description, parameters),
-    }),
-    ...(metadata.image !== undefined && {
-      image: populateTemplate(metadata.image, parameters),
-    }),
-    ...(metadata.external_url !== undefined && {
-      external_url: populateTemplate(metadata.external_url, parameters),
-    }),
-    ...(metadata.animation_url !== undefined && {
-      animation_url: populateTemplate(metadata.animation_url, parameters),
-    }),
-  };
-}
 
 export function useTokenImageUrl(
   volume: Node<FileData>,

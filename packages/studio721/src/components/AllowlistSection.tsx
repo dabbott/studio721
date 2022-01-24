@@ -1,11 +1,15 @@
 import { Address } from '@openpalette/contract';
 import { PlusIcon } from '@radix-ui/react-icons';
-import { HStack, Small, SpacerHorizontal } from 'components';
+import {
+  HStack,
+  Small,
+  SpacerHorizontal,
+  FormSection,
+  InfoHoverCard,
+} from 'components';
 import { ArrayController, Button, IconButton, InputField } from 'designsystem';
 import React, { memo, ReactNode, useCallback } from 'react';
 import { AllowlistDestination, Action } from 'state';
-import { FormSection } from './FormSection';
-import { InfoHoverCard } from './InfoHoverCard';
 
 export const DestinationRow = memo(function DestinationRow({
   id,

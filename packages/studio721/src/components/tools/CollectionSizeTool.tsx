@@ -3,9 +3,7 @@ import { InputField } from 'designsystem';
 import { Volume } from 'imfs';
 import React, { useMemo, useState } from 'react';
 import { CollectionState } from 'state';
-import { FormRow } from '../FormRow';
-import { FormRowError } from '../FormRowError';
-import { FormSection } from '../FormSection';
+import { FormRow, FormRowError, FormSection } from 'components';
 
 function validateSize(size: string) {
   const value = Number(size);

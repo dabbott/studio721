@@ -34,8 +34,7 @@ import {
   MintStyleState,
 } from 'state';
 import { priceToString, useReadOnlyContractData } from 'contract-data';
-import { FormRow } from './FormRow';
-import { FormSection } from './FormSection';
+import { FormRow, FormSection } from 'components';
 import { isMainnetOrPolygon } from 'web3-utils';
 
 export const SimplePrimaryButton = styled.button({

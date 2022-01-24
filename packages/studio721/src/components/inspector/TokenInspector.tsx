@@ -5,10 +5,9 @@ import { File, Volume } from 'imfs';
 import React from 'react';
 import { CollectionAction, CollectionState, parseTokenMetadata } from 'state';
 import { FileData } from 'files';
-import { getMultiValue } from '../../utils/getMultiValue';
+import { getMultiValue } from 'utils';
 import { NFTMetadata, NFTMetadataAttribute } from 'web3-utils';
-import { FormRow } from '../FormRow';
-import { FormSection } from '../FormSection';
+import { FormRow, FormSection } from 'components';
 import { AttributesInspector } from './AttributesInspector';
 
 type PickFileOption = 'computer' | 'internal';

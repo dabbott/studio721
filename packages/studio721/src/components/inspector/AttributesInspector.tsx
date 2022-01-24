@@ -1,5 +1,12 @@
 import { PlusIcon } from '@radix-ui/react-icons';
-import { Checkbox, HStack, Small, SpacerHorizontal } from 'components';
+import {
+  Checkbox,
+  HStack,
+  Small,
+  SpacerHorizontal,
+  FormSection,
+  InfoHoverCard,
+} from 'components';
 import {
   ArrayController,
   Button,
@@ -7,14 +14,11 @@ import {
   InputField,
   Select,
 } from 'designsystem';
-import { castHashParameter } from 'hooks/src/urlHashParameters';
+import { castHashParameter } from 'hooks';
 import React, { memo, ReactNode } from 'react';
-import { groupBy } from 'utils';
 import { CollectionAction, CollectionState } from 'state';
-import { getMultiValue } from '../../utils/getMultiValue';
+import { getMultiValue, groupBy } from 'utils';
 import { NFTMetadataAttribute, NFTMetadataAttributeType } from 'web3-utils';
-import { FormSection } from '../FormSection';
-import { InfoHoverCard } from '../InfoHoverCard';
 
 function getAttributeType(
   kind: string | number | boolean,

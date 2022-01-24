@@ -1,27 +1,29 @@
-import Head from 'next/head';
 import { MDXProvider } from '@mdx-js/react';
 import { getHeadTags, VStack } from 'components';
 import produce from 'immer';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { ReactNode, useMemo } from 'react';
 import {
   Anchor,
   defaultTheme,
+  findNodeBySlug,
+  guidebookStyled,
+  GuidebookThemeProvider,
   LinkProps,
   LinkProvider,
   Page,
   PageComponents,
   RouterProvider,
-  findNodeBySlug,
 } from 'react-guidebook';
-import styled, { ThemeProvider } from 'styled-components';
+import styled from 'styled-components';
 import { theme } from 'theme';
 import { isExternalUrl } from 'utils';
 import guidebook from '../../guidebook';
-import { JavascriptPlaygrounds } from './JavascriptPlaygrounds';
-import { socialConfig } from '../utils/socialConfig';
 import { searchPages, searchTextMatch } from '../utils/search';
+import { socialConfig } from '../utils/socialConfig';
+import { JavascriptPlaygrounds } from './JavascriptPlaygrounds';
 import { YouTube } from './YouTube';
 
 export function StatelessCodeView({
@@ -111,12 +113,12 @@ const StyledAnchor = styled(PageComponents.a)({
   lineBreak: 'anywhere',
 });
 
-const ScrollableTableContainer = styled.div({
+const ScrollableTableContainer = guidebookStyled.div({
   overflowX: 'auto',
   margin: '20px 0',
 });
 
-const StyledTable = styled(PageComponents.table)({
+const StyledTable = guidebookStyled(PageComponents.table)({
   background: '#1c1c1c',
   marginBottom: 0,
 });
@@ -192,7 +194,7 @@ export function Docs({
       <RouterProvider value={routerWithPrefix}>
         <LinkProvider value={LinkComponent}>
           {/* <Styles.Main /> */}
-          <ThemeProvider theme={docsTheme as any}>
+          <GuidebookThemeProvider theme={docsTheme}>
             {/* A single child is required here for React.Children.only */}
             <MDXProvider components={MDXComponents}>
               <Page
@@ -203,7 +205,7 @@ export function Docs({
                 {children}
               </Page>
             </MDXProvider>
-          </ThemeProvider>
+          </GuidebookThemeProvider>
         </LinkProvider>
       </RouterProvider>
     </>

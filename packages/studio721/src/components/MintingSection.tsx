@@ -21,8 +21,7 @@ import {
 } from 'state';
 import { isDeepEqual, upperFirst } from 'utils';
 import { getProxyAddress } from 'web3-utils';
-import { FormRow } from './FormRow';
-import { FormSection } from './FormSection';
+import { FormRow, FormSection } from 'components';
 
 interface Props {
   config: ContractConfigState;
