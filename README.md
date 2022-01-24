@@ -8,7 +8,7 @@ built by [@dvnabbott](https://twitter.com/dvnabbott) and sponsored by
 
 A brief intro to Studio 721:
 
-<a href="https://www.youtube.com/watch?v=ZB5SiXXZbds&list=PLu07TXQzA0jordwXTlQIanzES0S52R-py" rel="nofollow">
+<a href="https://youtu.be/iWV5c_HWUw8?list=PLu07TXQzA0jo9RuBstWDDmm1LOorye3aP" rel="nofollow">
 <img width="692" alt="Intro Video" src="docs/assets/intro-video-poster.png">
 </a>
 
