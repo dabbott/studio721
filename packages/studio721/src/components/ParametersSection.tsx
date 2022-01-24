@@ -45,7 +45,7 @@ export const ParameterRow = memo(function ParameterRow({
         id={`${id}-type`}
         disabled={disabled}
         value={type}
-        options={['uint256', 'string']}
+        options={['uint256', 'string', 'address']}
         onChange={onChangeType}
       />
       <SpacerHorizontal size={6} />

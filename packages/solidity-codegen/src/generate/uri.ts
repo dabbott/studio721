@@ -290,7 +290,8 @@ export function generateURIHandling(
                                                   `"${parameter.name}="`,
                                                 ),
                                                 identifierExpression(
-                                                  parameter.type === 'string'
+                                                  parameter.type === 'string' ||
+                                                    parameter.type === 'address'
                                                     ? `parameters.${parameter.name}`
                                                     : `parameters.${parameter.name}.toString()`,
                                                 ),

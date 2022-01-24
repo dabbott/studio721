@@ -66,7 +66,7 @@ export type EthereumChainName = ReturnType<typeof getChainName>;
 
 export type ScopedAccessToken = Record<EthereumChainName, string>;
 
-export type TokenParameterType = 'uint256' | 'string';
+export type TokenParameterType = 'uint256' | 'string' | 'address';
 
 export type TokenParameter = {
   name: string;
