@@ -19,6 +19,7 @@
     "build:polygen": "yarn workspace polygen build",
     "test": "modular test",
     "lint": "modular lint",
+    "lint-staged": "lint-staged",
     "prettier": "prettier --write ."
   },
   "eslintConfig": {
@@ -60,8 +61,15 @@
     "@types/react-dom": "^17.0.10",
     "critters": "^0.0.16",
     "eslint-config-modular-app": "^1.0.11",
+    "lint-staged": "^12.3.1",
     "modular-scripts": "2.2.0",
     "prettier": "^2.4.1",
     "typescript": "^4.1.2"
+  },
+  "lint-staged": {
+    "packages/**/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "npx eslint --fix --max-warnings 0"
+    ]
   }
 }
