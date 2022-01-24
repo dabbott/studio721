@@ -16,8 +16,8 @@ import { GuidebookThemeProvider, StarButton } from 'react-guidebook';
 import styled, { useTheme } from 'styled-components';
 import logoUrl from '../assets/studio721.svg';
 import blocksUrl from '../assets/studio721blocks.svg';
-import { docsTheme } from '../components/Docs';
-import { SimplePrimaryButton } from '../components/MintingCardDetails';
+import { docsTheme } from '../components/docs/Docs';
+import { SimplePrimaryButton } from '../components/mint/MintingCardDetails';
 import { socialConfig } from '../utils/socialConfig';
 
 const LogoImage = styled.img({

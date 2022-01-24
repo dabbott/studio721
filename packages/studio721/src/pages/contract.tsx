@@ -26,13 +26,13 @@ import React, {
   useReducer,
   useRef,
 } from 'react';
-import { createCompilerInput } from 'solidity-compiler';
 import {
   downloadDependenciesForSource,
   generateContractSource,
   getBaseURI,
   getValidContractName,
 } from 'solidity-codegen';
+import { createCompilerInput } from 'solidity-compiler';
 import {
   ContractConfigState,
   createInitialState,
@@ -43,21 +43,21 @@ import {
 } from 'state';
 import { SolidityCompilerOutput, WorkerRequest, WorkerResponse } from 'utils';
 import { getEtherscanApiUrl } from 'web3-utils';
-import { AllowlistSection } from '../components/AllowlistSection';
-import { ContractConsole } from '../components/ContractConsole';
-import { MintingSection } from '../components/MintingSection';
-import { ParametersSection } from '../components/ParametersSection';
-import { PayoutSection } from '../components/PayoutSection';
-import { TokenPreview } from '../components/TokenPreview';
-import { VerificationSection } from '../components/VerificationSection';
-import { deployContract } from '../studio/deploy';
+import { AllowlistSection } from '../components/contract/AllowlistSection';
+import { ContractConsole } from '../components/contract/ContractConsole';
+import { MintingSection } from '../components/contract/MintingSection';
+import { ParametersSection } from '../components/contract/ParametersSection';
+import { PayoutSection } from '../components/contract/PayoutSection';
+import { TokenPreview } from '../components/contract/TokenPreview';
+import { VerificationSection } from '../components/contract/VerificationSection';
+import { deployContract } from '../utils/deploy';
+import { socialConfig } from '../utils/socialConfig';
 import {
   checkVerificationStatus,
   toCheckStatusRequest,
   toVerifyRequest,
   verifyContract,
-} from '../studio/verify';
-import { socialConfig } from '../utils/socialConfig';
+} from '../utils/verify';
 
 const SCHEMA_VERSION_KEY = 'schemaVersion';
 

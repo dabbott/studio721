@@ -34,10 +34,10 @@ import {
 } from 'state';
 import { getEtherActorBaseURL, getEtherscanAddressUrl } from 'web3-utils';
 import delegatedAbi from '../assets/slim-gwei-abi.json';
-import { BackgroundFill } from '../components/BackgroundFill';
-import { ColorPicker } from '../components/ColorPicker';
-import { MintingCard } from '../components/MintingCard';
-import { SimplePrimaryButton } from '../components/MintingCardDetails';
+import { BackgroundFill } from '../components/mint/BackgroundFill';
+import { ColorPicker } from '../components/mint/ColorPicker';
+import { MintingCard } from '../components/mint/MintingCard';
+import { SimplePrimaryButton } from '../components/mint/MintingCardDetails';
 import {
   decodeConfigParameter,
   useUrlConfigReducer,

@@ -25,7 +25,7 @@ import { Node, Volume } from 'imfs';
 import React, { ReactNode, useReducer, useRef, useState } from 'react';
 import { PublishingState, publishingStateReducer } from 'state';
 import { useTheme } from 'styled-components';
-import { uploadToNFTStorage } from '../../utils/nftStorage';
+import { uploadToNFTStorage } from '../../../utils/nftStorage';
 
 const inputStyle = {
   padding: '8px 12px',

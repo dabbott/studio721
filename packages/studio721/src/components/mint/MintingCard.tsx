@@ -40,7 +40,7 @@ import {
   MintingCardDetails,
   MintOptions,
 } from './MintingCardDetails';
-import { baseURIToHTTPS, proxyURL } from './TokenPreview';
+import { baseURIToHTTPS, proxyURL } from '../contract/TokenPreview';
 
 interface ContractConnection {
   abi: Interface;

@@ -4,7 +4,7 @@ import { Button } from 'designsystem';
 import { path } from 'imfs';
 import React, { useState } from 'react';
 // TODO: Improve package structure so we don't have to import like this
-import { GenerateMetadataTool } from '../../../studio721/src/components/tools/GenerateMetadataTool';
+import { GenerateMetadataTool } from '../../../studio721/src/components/artkit/tools/GenerateMetadataTool';
 import { WebsiteInspector } from '../inspector/WebsiteInspector';
 import { FileBrowserProps, FileBrowserView } from '../types';
 

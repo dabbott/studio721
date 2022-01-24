@@ -20,10 +20,10 @@ import {
 import styled from 'styled-components';
 import { theme } from 'theme';
 import { isExternalUrl } from 'utils';
-import guidebook from '../../guidebook';
-import { searchPages, searchTextMatch } from '../utils/search';
-import { socialConfig } from '../utils/socialConfig';
-import { JavascriptPlaygrounds } from '../../../artkit-browser/src/JavascriptPlaygrounds';
+import guidebook from '../../../guidebook';
+import { searchPages, searchTextMatch } from '../../utils/search';
+import { socialConfig } from '../../utils/socialConfig';
+import { JavascriptPlaygrounds } from 'artkit-browser/src/JavascriptPlaygrounds';
 import { YouTube } from './YouTube';
 
 export function StatelessCodeView({

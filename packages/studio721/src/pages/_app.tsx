@@ -21,7 +21,7 @@ import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import { theme } from 'theme';
 import logoUrl from '../assets/studio721.svg';
-import { Docs } from '../components/Docs';
+import { Docs } from '../components/docs/Docs';
 import '../styles/globals.css';
 
 const docsUrlPrefix = '/guide';

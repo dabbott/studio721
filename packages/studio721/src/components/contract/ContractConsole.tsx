@@ -10,7 +10,7 @@ import {
 } from 'state';
 import { UTF16 } from 'utils';
 import { createCompilerInput } from 'solidity-compiler';
-import { saveFile } from '../studio/download';
+import { saveFile } from '../../utils/download';
 import { Console } from './Console';
 import { Zip } from 'files';
 import { getBlockExplorerName, getEtherscanAddressUrl } from 'web3-utils';
