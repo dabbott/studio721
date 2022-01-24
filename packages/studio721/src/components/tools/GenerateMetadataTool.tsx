@@ -15,7 +15,7 @@ import {
   generateTokensFromWebsite,
 } from 'artkit-capture';
 import { getEntryFile, ImagePreview } from 'artkit-browser';
-import { findAllTokenFiles } from 'artkit-create';
+import { findAllTokenFiles } from 'artkit-collection';
 import { fileDataToBytes } from 'files';
 import { FormRow, FormSection, InfoHoverCard } from 'components';
 

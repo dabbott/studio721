@@ -11,7 +11,7 @@ import {
   isTokenFile,
   isWebsite,
 } from 'artkit-browser';
-import { createEntriesFromVolume } from 'artkit-create';
+import { createEntriesFromVolume } from 'artkit-collection';
 import { fileOpen, fileSave } from 'browser-fs-access';
 import { Dialog, FolderIcon } from 'components';
 import { createSectionedMenu, ListView, TreeView } from 'designsystem';

@@ -18,7 +18,7 @@ import {
   createBasicMetadataVolume,
   createGenerativeArtCollection,
   openCollectionFile,
-} from 'artkit-create';
+} from 'artkit-collection';
 
 export function CollectionWelcome({
   onInitialize,

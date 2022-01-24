@@ -3,7 +3,7 @@ import {
   createBasicMetadataVolume,
   openCollectionFile,
   saveCollectionFile,
-} from 'artkit-create';
+} from 'artkit-collection';
 import { Dialog, HStack, SpacerHorizontal } from 'components';
 import { Button, createSectionedMenu, DropdownMenu } from 'designsystem';
 import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';

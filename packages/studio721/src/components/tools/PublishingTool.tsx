@@ -4,7 +4,7 @@ import {
   DotsHorizontalIcon,
   ExclamationTriangleIcon,
 } from '@radix-ui/react-icons';
-import { createEntriesFromVolume, findAllTokenFiles } from 'artkit-create';
+import { createEntriesFromVolume, findAllTokenFiles } from 'artkit-collection';
 import {
   Button as RainbowButton,
   Code,
