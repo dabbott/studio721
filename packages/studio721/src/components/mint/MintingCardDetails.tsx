@@ -787,10 +787,15 @@ export function MintingCardDetails({
             }}
             disabled={
               wrongNetwork ||
+              !mintParameters ||
+              // If saleIsActive isn't explicitly ignored...
               (!dataSources.saleIsActive.disabled &&
+                // Disable only if there's already a contract provider (a connected wallet).
+                // If Http/JsonRpc providers fail, people can still connect a wallet, and we
+                // can fall back to the wallet to fetch again.
+                contract?.provider &&
                 (saleIsActiveResult.type !== 'success' ||
-                  (contract?.provider && !saleIsActiveResult.value))) ||
-              !mintParameters
+                  !saleIsActiveResult.value))
             }
           >
             {!mintParameters

@@ -30,8 +30,6 @@ export function useReadOnlyContractData<T = FunctionOutput>({
       try {
         if (!contract || !fragment || !chainId) return;
 
-        console.log('fetch');
-
         const result = await callReadOnlyContractFunction<T>(
           chainId,
           fragment,
