@@ -317,8 +317,11 @@ export function MintingCardDetails({
         ? `${heightNumber}px`
         : coverAsset.size.height,
     maxWidth: '100%',
-    objectFit: 'cover',
-    objectPosition: 'center',
+    // These properties cause layout problems for iframes on safari
+    ...(coverAsset.type !== 'webpage' && {
+      objectFit: 'cover',
+      objectPosition: 'center',
+    }),
   };
 
   const wrongNetwork = chainId && contractChainId !== chainId;
