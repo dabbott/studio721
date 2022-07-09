@@ -139,7 +139,7 @@ export default function Studio721() {
         background="linear-gradient(#222,#111)"
       >
         <VStack
-          flex="1 1 0px"
+          flex="auto"
           alignItems="center"
           justifyContent="center"
           padding={'60px 20px'}
