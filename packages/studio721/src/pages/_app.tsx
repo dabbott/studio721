@@ -1,6 +1,5 @@
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import {
-  DiscordLogoIcon,
   HStack,
   NavLink,
   SpacerHorizontal,
@@ -17,7 +16,7 @@ import { castHashParameter, useUrlHashParameters } from 'hooks';
 import { getCurrentPlatform } from 'keymap';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import styled from 'styled-components';
 import { theme } from 'theme';
 import logoUrl from '../assets/studio721.svg';
@@ -117,9 +116,6 @@ export default function App({ Component, pageProps }: AppProps) {
                     </NavLink>
                     <NavLink href="https://twitter.com/dvnabbott">
                       <TwitterLogoIcon width={22} height={22} />
-                    </NavLink>
-                    <NavLink href="https://discord.gg/HWFNayQaDc">
-                      <DiscordLogoIcon width={25} height={25} />
                     </NavLink>
                   </HStack>
                 </HStack>
