@@ -158,29 +158,10 @@ Lastly, you can set up a custom API that serves arbitrary JSON metadata. For
 developers, this is likely the easiest option; for non-developers, IPFS may be
 simpler.
 
-The advantage of this approach is speed, cost, and flexibility. As an example,
-`721.so` serves a simple set of NFT metadata for testing purposes. For _any_
-token id from 0 to infinity, the API will return valid metadata. This would be
-impossible with IPFS, since you could never upload _infinity files_.
-
-For example, token 123456789,
-[https://www.721.so/api/example/metadata/123456789](https://www.721.so/api/example/metadata/123456789):
-
-<Editor
-  height={240}
-  filename="123456789.json"
-  code={`{
-  "name": "Token #123456789",
-  "description": "An example nonfungible token. Photo by Ivan Slade from https://picsum.photos.",
-  "image": "https://picsum.photos/id/941/510/510",
-  "external_url": "https://unsplash.com/photos/RdyMe8KQAV0",
-  "animation_url": "https://picsum.photos/id/941/2600/1734",
-  "attributes": [
-    { trait_type: "Width", value: 2600 },
-    { trait_type: "Height", value: 1734 },
-  ]
-}`}
-/>
+The advantage of this approach is speed, cost, and flexibility. As an example of
+the additional flexibility, an API can return metadata for _any_ token id from 0
+to infinity. This would be impossible with IPFS, since you could never upload
+_infinity files_.
 
 ## Choosing a Storage Option
 

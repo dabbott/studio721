@@ -1,1 +1,3 @@
 /solc/*    https://binaries.soliditylang.org/bin/:splat 200
+/api/example/metadata/:id https://gateway.ipfs.io/ipfs/bafybeihf347qst2yxau4phswwensovjv267zruqwp6zlhrmooxwdpcqhl4/metadata/:id.token.json
+/api/example/assets/image/:id https://gateway.ipfs.io/ipfs/bafybeihf347qst2yxau4phswwensovjv267zruqwp6zlhrmooxwdpcqhl4/assets/:id.png

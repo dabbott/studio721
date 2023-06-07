@@ -1,16 +1,4 @@
-import Cors from 'cors';
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { initMiddleware } from 'utils';
-import { picsumItems } from '../../../../utils/exampleImages';
-
-// Initialize the cors middleware
-const cors = initMiddleware(
-  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-  Cors({
-    // Only allow requests with GET, POST and OPTIONS
-    methods: ['GET', 'POST', 'OPTIONS'],
-  }),
-);
+import { picsumItems } from './exampleImages';
 
 type Data = {
   name: string;
@@ -21,17 +9,10 @@ type Data = {
   attributes?: { trait_type: string; value: any }[];
 };
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>,
-) {
-  const { id } = req.query;
-
-  await cors(req, res);
-
+export function getExampleMetadata(id: string | number) {
   const item = picsumItems[Number(id) % picsumItems.length];
 
-  res.status(200).json({
+  const data: Data = {
     name: `Token #${id}`,
     description: `An example nonfungible token. Photo by ${item.author} from https://picsum.photos.`,
     image: `https://picsum.photos/id/${item.id}/510/510`,
@@ -47,5 +28,7 @@ export default async function handler(
         value: item.height,
       },
     ],
-  });
+  };
+
+  return data;
 }

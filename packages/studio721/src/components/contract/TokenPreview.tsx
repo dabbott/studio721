@@ -5,21 +5,24 @@ import {
   Checkbox,
   Code,
   CodeHighlight,
+  FormRow,
+  FormRowError,
   HStack,
+  InfoHoverCard,
   LinkChip,
   Small,
   SpacerVertical,
   VStack,
 } from 'components';
 import { useChainId } from 'contexts';
+import { getCurrencySymbol } from 'contract-data';
 import { InputField, TextArea } from 'designsystem';
-import { useFetch } from 'hooks';
-import React, { memo, useCallback, useState } from 'react';
+import { PromiseState, useFetch } from 'hooks';
+import { memo, useCallback, useState } from 'react';
 import { generateURI, parseURITemplate } from 'solidity-codegen';
 import { Action, ContractConfigState } from 'state';
 import { encodeQueryParameters } from 'utils';
-import { getCurrencySymbol } from 'contract-data';
-import { FormRow, FormRowError, InfoHoverCard } from 'components';
+import { getExampleMetadata } from '../../utils/exampleMetadata';
 
 interface Props {
   config: ContractConfigState;
@@ -39,6 +42,18 @@ export function proxyURL(url: string) {
   return `/api/proxy?${encodeQueryParameters({ url })}`;
 }
 
+// Special case for example metadata URIs so we don't need to fetch them
+// https://www.721.so/api/example/metadata/{id}
+function parseExampleId(baseURI: string) {
+  const match = baseURI.match(
+    /^https?:\/\/www\.721\.so\/api\/example\/metadata\/(\d+)$/,
+  );
+
+  if (!match) return null;
+
+  return match[1];
+}
+
 export const TokenPreview = memo(function TokenPreview({
   dispatch,
   config,
@@ -50,7 +65,14 @@ export const TokenPreview = memo(function TokenPreview({
     generateURI(config.tokenURI, tokenPreviewId, config.tokenParameters) ?? '';
   const httpsTokenURI = baseURIToHTTPS(tokenURI);
   const proxyTokenURI = proxyURL(httpsTokenURI);
-  const tokenMetadata = useFetch<{ image?: string }>(proxyTokenURI, 'json');
+  const parsedExampleId = parseExampleId(httpsTokenURI);
+  const fetchedMetadata = useFetch<{ image?: string }>(
+    parsedExampleId ? undefined : proxyTokenURI,
+    'json',
+  );
+  const tokenMetadata: PromiseState<{ image?: string }> = parsedExampleId
+    ? { type: 'success', value: getExampleMetadata(parsedExampleId) }
+    : fetchedMetadata;
   const tokenImageUrl =
     tokenMetadata.type === 'success' && tokenMetadata.value.image;
   const chainId = useChainId();
@@ -340,7 +362,7 @@ export const TokenPreview = memo(function TokenPreview({
               The URI of the metadata for each token.
               <SpacerVertical size={20} />
               The <Code>{`{tokenId}`}</Code> variable will be replaced with the
-              current token ID. As an example,{' '}
+              current token ID. As an example, for token 0{' '}
               <Code>https://www.721.so/api/example/metadata/{`{tokenId}`}</Code>{' '}
               becomes{' '}
               <LinkChip
